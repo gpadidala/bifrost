@@ -19,6 +19,8 @@ import anyio
 import uvicorn
 from mcp.server.sse import SseServerTransport
 from starlette.applications import Starlette
+from starlette.middleware import Middleware
+from starlette.middleware.cors import CORSMiddleware
 from starlette.requests import Request
 from starlette.responses import JSONResponse
 from starlette.routing import Mount, Route
@@ -27,6 +29,7 @@ from ._app import mcp
 
 # Import all tool modules — this registers every @mcp.tool() decorator.
 from . import tools as _tools  # noqa: F401
+from . import ui_bridge
 
 _tools  # suppress unused-import linters
 
@@ -62,7 +65,16 @@ def _build_starlette_app(path_prefix: str = "/mcp") -> Starlette:
             Route("/healthz", healthz),
             Route(f"{prefix}/sse", handle_sse),
             Mount(messages_path, app=sse_transport.handle_post_message),
-        ]
+            *ui_bridge.routes(),
+        ],
+        middleware=[
+            Middleware(
+                CORSMiddleware,
+                allow_origins=["http://localhost:5173", "http://127.0.0.1:5173"],
+                allow_methods=["GET", "POST", "OPTIONS"],
+                allow_headers=["*"],
+            ),
+        ],
     )
 
 
