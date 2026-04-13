@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 560 420" width="560" height="420" role="img" aria-label="LLM Config drawer">
+  <rect width="560" height="420" fill="#0d0d12"/>
+  <rect width="560" height="40" fill="#111827"/>
+  <rect width="560" height="1" y="40" fill="#1e2333"/>
+  <circle cx="20" cy="20" r="6" fill="#ef4444"/>
+  <circle cx="38" cy="20" r="6" fill="#f59e0b"/>
+  <circle cx="56" cy="20" r="6" fill="#22c55e"/>
+  <text x="280" y="25" font-family="'IBM Plex Sans',system-ui,sans-serif" font-size="12" fill="#64748b" text-anchor="middle">LLM Configuration</text>
+  <!-- Provider selector -->
+  <text x="20" y="72" font-family="'IBM Plex Sans',system-ui,sans-serif" font-size="11" fill="#94a3b8" font-weight="600" letter-spacing="1">PROVIDER</text>
+  <!-- Anthropic tab (selected) -->
+  <rect x="20" y="80" width="130" height="40" rx="8" fill="#1e2333" stroke="#f59e0b" stroke-width="1"/>
+  <text x="34" y="97" font-family="'IBM Plex Sans',system-ui,sans-serif" font-size="11" fill="#f59e0b" font-weight="600">● Anthropic</text>
+  <text x="34" y="112" font-family="'JetBrains Mono',monospace" font-size="9" fill="#92400e">claude-sonnet-4-5</text>
+  <!-- OpenAI tab -->
+  <rect x="160" y="80" width="110" height="40" rx="8" fill="#111827" stroke="#1e2333" stroke-width="1"/>
+  <text x="174" y="97" font-family="'IBM Plex Sans',system-ui,sans-serif" font-size="11" fill="#475569">○ OpenAI</text>
+  <text x="174" y="112" font-family="'JetBrains Mono',monospace" font-size="9" fill="#334155">gpt-4o</text>
+  <!-- Custom tab -->
+  <rect x="280" y="80" width="110" height="40" rx="8" fill="#111827" stroke="#1e2333" stroke-width="1"/>
+  <text x="294" y="97" font-family="'IBM Plex Sans',system-ui,sans-serif" font-size="11" fill="#475569">○ Custom</text>
+  <text x="294" y="112" font-family="'JetBrains Mono',monospace" font-size="9" fill="#334155">OpenAI-compat</text>
+  <!-- API Key field -->
+  <text x="20" y="150" font-family="'IBM Plex Sans',system-ui,sans-serif" font-size="11" fill="#94a3b8">API Key</text>
+  <rect x="20" y="158" width="520" height="32" rx="6" fill="#0d0d12" stroke="#1e2333" stroke-width="1"/>
+  <text x="32" y="179" font-family="'JetBrains Mono',monospace" font-size="12" fill="#475569">sk-ant-••••••••••••••••••••••••••••••••••••••••••</text>
+  <!-- Model selector -->
+  <text x="20" y="214" font-family="'IBM Plex Sans',system-ui,sans-serif" font-size="11" fill="#94a3b8">Model</text>
+  <rect x="20" y="222" width="260" height="32" rx="6" fill="#0d0d12" stroke="#1e2333" stroke-width="1"/>
+  <text x="32" y="243" font-family="'JetBrains Mono',monospace" font-size="12" fill="#e2e8f0">claude-sonnet-4-5</text>
+  <text x="268" y="243" font-family="'IBM Plex Sans',system-ui,sans-serif" font-size="16" fill="#475569">⌄</text>
+  <!-- Temperature -->
+  <text x="300" y="214" font-family="'IBM Plex Sans',system-ui,sans-serif" font-size="11" fill="#94a3b8">Temperature</text>
+  <rect x="300" y="222" width="240" height="32" rx="6" fill="#0d0d12" stroke="#1e2333" stroke-width="1"/>
+  <rect x="300" y="234" width="120" height="8" rx="4" fill="#f59e0b"/>
+  <circle cx="420" cy="238" r="7" fill="#f59e0b"/>
+  <text x="448" y="243" font-family="'JetBrains Mono',monospace" font-size="12" fill="#e2e8f0">0.5</text>
+  <!-- System prompt -->
+  <text x="20" y="278" font-family="'IBM Plex Sans',system-ui,sans-serif" font-size="11" fill="#94a3b8">System Prompt</text>
+  <rect x="20" y="286" width="520" height="72" rx="6" fill="#0d0d12" stroke="#1e2333" stroke-width="1"/>
+  <text x="32" y="306" font-family="'IBM Plex Sans',system-ui,sans-serif" font-size="11" fill="#64748b">You are an expert SRE assistant with access to Grafana.</text>
+  <text x="32" y="324" font-family="'IBM Plex Sans',system-ui,sans-serif" font-size="11" fill="#64748b">Use the available tools to answer questions about dashboards,</text>
+  <text x="32" y="342" font-family="'IBM Plex Sans',system-ui,sans-serif" font-size="11" fill="#64748b">alerts, and datasources.</text>
+  <!-- Save button -->
+  <rect x="20" y="376" width="520" height="36" rx="6" fill="#f59e0b"/>
+  <text x="280" y="399" font-family="'IBM Plex Sans',system-ui,sans-serif" font-size="13" fill="#0d0d12" text-anchor="middle" font-weight="700">Save Configuration</text>
+</svg>

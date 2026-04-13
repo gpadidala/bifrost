@@ -30,11 +30,11 @@
 ---
 
 <p align="center">
-  <img src="docs/assets/bifrost-demo.gif" alt="Bifröst 60-second walkthrough" width="100%">
+  <img src="docs/assets/bifrost-demo.svg" alt="Bifröst 60-second walkthrough" width="100%">
 </p>
 
 <p align="center">
-  <img src="docs/assets/screenshots/00-splash.png" alt="Bifröst launch splash" width="100%">
+  <img src="docs/assets/screenshots/00-splash.svg" alt="Bifröst launch splash" width="100%">
 </p>
 
 ---
@@ -140,51 +140,51 @@ Curl wrappers are easy to start, impossible to maintain, and leak admin tokens i
 <table>
   <tr>
     <td align="center">
-      <img src="docs/assets/screenshots/01-connection-config.png" width="280" alt="Connection Config">
+      <img src="docs/assets/screenshots/01-connection-config.svg" width="280" alt="Connection Config">
       <br><b>Connection Config</b>
       <br><sub>One card per env · live ping per role</sub>
     </td>
     <td align="center">
-      <img src="docs/assets/screenshots/02-chat.png" width="280" alt="AI Chat">
+      <img src="docs/assets/screenshots/02-chat.svg" width="280" alt="AI Chat">
       <br><b>AI Chat</b>
       <br><sub>Claude / GPT wired to live MCP tools</sub>
     </td>
     <td align="center">
-      <img src="docs/assets/screenshots/03-tool-call.png" width="280" alt="Tool Call Visualization">
+      <img src="docs/assets/screenshots/03-tool-call.svg" width="280" alt="Tool Call Visualization">
       <br><b>Tool Call Card</b>
       <br><sub>Collapsible tool name + params + result</sub>
     </td>
   </tr>
   <tr>
     <td align="center">
-      <img src="docs/assets/screenshots/04-explorer.png" width="280" alt="Resource Explorer">
+      <img src="docs/assets/screenshots/04-explorer.svg" width="280" alt="Resource Explorer">
       <br><b>Resource Explorer</b>
       <br><sub>Folders → dashboards → panels (live)</sub>
     </td>
     <td align="center">
-      <img src="docs/assets/screenshots/05-llm-config.png" width="280" alt="LLM Config">
+      <img src="docs/assets/screenshots/05-llm-config.svg" width="280" alt="LLM Config">
       <br><b>LLM Config Drawer</b>
       <br><sub>Provider · model · system prompt</sub>
     </td>
     <td align="center">
-      <img src="docs/assets/screenshots/06-vscode.png" width="280" alt="VSCode MCP">
+      <img src="docs/assets/screenshots/06-vscode.svg" width="280" alt="VSCode MCP">
       <br><b>VSCode MCP Extension</b>
       <br><sub>Drops into Copilot Chat instantly</sub>
     </td>
   </tr>
   <tr>
     <td align="center">
-      <img src="docs/assets/screenshots/07-sdk-shell.png" width="280" alt="SDK REPL">
+      <img src="docs/assets/screenshots/07-sdk-shell.svg" width="280" alt="SDK REPL">
       <br><b>SDK Interactive Shell</b>
       <br><sub><code>grafana-sdk shell --env dev --role editor</code></sub>
     </td>
     <td align="center">
-      <img src="docs/assets/screenshots/08-role-badge.png" width="280" alt="Role Badge">
+      <img src="docs/assets/screenshots/08-role-badge.svg" width="280" alt="Role Badge">
       <br><b>Role Selector</b>
       <br><sub>Viewer · Editor · Admin segmented control</sub>
     </td>
     <td align="center">
-      <img src="docs/assets/screenshots/09-health.png" width="280" alt="Health">
+      <img src="docs/assets/screenshots/09-health.svg" width="280" alt="Health">
       <br><b>Health Status</b>
       <br><sub>Per-env, per-role connection badges</sub>
     </td>

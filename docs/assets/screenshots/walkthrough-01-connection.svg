@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 360" width="720" height="360" role="img" aria-label="Walkthrough step 1 — connection configuration">
+  <rect width="720" height="360" fill="#0d0d12"/>
+  <!-- Step badge -->
+  <rect x="16" y="16" width="88" height="28" rx="14" fill="#f59e0b"/>
+  <text x="60" y="35" font-family="'IBM Plex Sans',system-ui,sans-serif" font-size="12" fill="#0d0d12" text-anchor="middle" font-weight="700">Step 1 of 3</text>
+  <text x="120" y="35" font-family="'IBM Plex Sans',system-ui,sans-serif" font-size="14" fill="#e2e8f0" font-weight="600">Configure your Grafana connection</text>
+  <!-- Connection form -->
+  <rect x="16" y="56" width="420" height="284" rx="10" fill="#111827" stroke="#1e2333" stroke-width="1"/>
+  <!-- Env tabs -->
+  <rect x="32" y="72" width="52" height="24" rx="5" fill="#f59e0b"/>
+  <text x="58" y="88" font-family="'JetBrains Mono',monospace" font-size="11" fill="#0d0d12" text-anchor="middle" font-weight="700">dev</text>
+  <rect x="92" y="72" width="52" height="24" rx="5" fill="#1e2333"/>
+  <text x="118" y="88" font-family="'JetBrains Mono',monospace" font-size="11" fill="#475569" text-anchor="middle">perf</text>
+  <rect x="152" y="72" width="52" height="24" rx="5" fill="#1e2333"/>
+  <text x="178" y="88" font-family="'JetBrains Mono',monospace" font-size="11" fill="#475569" text-anchor="middle">prod</text>
+  <!-- URL -->
+  <text x="32" y="116" font-family="'IBM Plex Sans',system-ui,sans-serif" font-size="11" fill="#94a3b8">Grafana URL</text>
+  <rect x="32" y="122" width="388" height="30" rx="6" fill="#0d0d12" stroke="#f59e0b" stroke-width="1"/>
+  <text x="44" y="141" font-family="'JetBrains Mono',monospace" font-size="11" fill="#e2e8f0">http://localhost:3000</text>
+  <!-- Token -->
+  <text x="32" y="170" font-family="'IBM Plex Sans',system-ui,sans-serif" font-size="11" fill="#94a3b8">Viewer Token</text>
+  <rect x="32" y="176" width="388" height="30" rx="6" fill="#0d0d12" stroke="#1e2333" stroke-width="1"/>
+  <text x="44" y="195" font-family="'JetBrains Mono',monospace" font-size="11" fill="#475569">glsa_dev_viewer_••••••••••••••••</text>
+  <!-- Health OK -->
+  <rect x="32" y="220" width="388" height="36" rx="6" fill="#052e16" stroke="#166534" stroke-width="1"/>
+  <circle cx="50" cy="238" r="6" fill="#22c55e"/>
+  <text x="64" y="242" font-family="'IBM Plex Sans',system-ui,sans-serif" font-size="12" fill="#22c55e" font-weight="600">Connected — Grafana 11.4.0 — 12 ms</text>
+  <!-- Save button -->
+  <rect x="32" y="272" width="388" height="36" rx="6" fill="#f59e0b"/>
+  <text x="226" y="295" font-family="'IBM Plex Sans',system-ui,sans-serif" font-size="13" fill="#0d0d12" text-anchor="middle" font-weight="700">Save &amp; Continue →</text>
+  <!-- Annotation callouts -->
+  <line x1="436" y1="138" x2="490" y2="138" stroke="#f59e0b" stroke-width="1" stroke-dasharray="4,3"/>
+  <rect x="490" y="108" width="214" height="60" rx="6" fill="#1a1505" stroke="#f59e0b" stroke-width="1"/>
+  <text x="506" y="128" font-family="'IBM Plex Sans',system-ui,sans-serif" font-size="11" fill="#fbbf24" font-weight="600">① Grafana URL</text>
+  <text x="506" y="146" font-family="'IBM Plex Sans',system-ui,sans-serif" font-size="10" fill="#92400e">Point to your Grafana instance.</text>
+  <text x="506" y="160" font-family="'IBM Plex Sans',system-ui,sans-serif" font-size="10" fill="#92400e">Docker? Use http://grafana:3000</text>
+  <line x1="436" y1="238" x2="490" y2="238" stroke="#22c55e" stroke-width="1" stroke-dasharray="4,3"/>
+  <rect x="490" y="210" width="214" height="56" rx="6" fill="#052e16" stroke="#166534" stroke-width="1"/>
+  <text x="506" y="230" font-family="'IBM Plex Sans',system-ui,sans-serif" font-size="11" fill="#22c55e" font-weight="600">② Health check</text>
+  <text x="506" y="248" font-family="'IBM Plex Sans',system-ui,sans-serif" font-size="10" fill="#16a34a">Runs automatically on URL</text>
+  <text x="506" y="262" font-family="'IBM Plex Sans',system-ui,sans-serif" font-size="10" fill="#16a34a">change. Green = ready.</text>
+</svg>
