@@ -28,12 +28,36 @@ from starlette.responses import JSONResponse
 from starlette.routing import Route
 
 from . import _state
+from ._app import mcp
 from .client.grafana import GrafanaClient
+from .rbac import TOOL_MINIMUM_ROLE
 from .settings import EnvironmentConfig, ServiceAccounts
+from .tools import alerts as _alerts
 from .tools import dashboards as _dashboards
 from .tools import datasources as _datasources
 from .tools import folders as _folders
+from .tools import users as _users
 from .tools import utility as _utility
+
+# Name → async function map. Mirrors @mcp.tool() registrations.
+_TOOL_DISPATCH: dict[str, Any] = {
+    "list_dashboards": _dashboards.list_dashboards,
+    "search_dashboards": _dashboards.search_dashboards,
+    "get_dashboard": _dashboards.get_dashboard,
+    "get_dashboard_panels": _dashboards.get_dashboard_panels,
+    "list_datasources": _datasources.list_datasources,
+    "get_datasource": _datasources.get_datasource,
+    "query_datasource": _datasources.query_datasource,
+    "list_folders": _folders.list_folders,
+    "list_alert_rules": _alerts.list_alert_rules,
+    "get_alert_rule": _alerts.get_alert_rule,
+    "list_alert_instances": _alerts.list_alert_instances,
+    "silence_alert": _alerts.silence_alert,
+    "list_users": _users.list_users,
+    "list_service_accounts": _users.list_service_accounts,
+    "health_check": _utility.health_check,
+    "get_server_info": _utility.get_server_info,
+}
 
 _VALID_ENVS = ("dev", "perf", "prod")
 _VALID_ROLES = ("viewer", "editor", "admin")
@@ -284,6 +308,59 @@ async def get_server_info_tool(request: Request) -> JSONResponse:
     return await _call_tool(_utility.get_server_info)
 
 
+# ── MCP tool catalog + dispatch (for LLM chat in the UI) ──────────────────
+
+
+async def list_tools(request: Request) -> JSONResponse:
+    """Return every registered @mcp.tool with its JSON Schema, in Anthropic+OpenAI-ready shape."""
+    try:
+        tools = await mcp.list_tools()
+    except Exception as exc:  # noqa: BLE001
+        return _err(exc.__class__.__name__, str(exc), 500)
+
+    out: list[dict[str, Any]] = []
+    for t in tools:
+        schema = getattr(t, "inputSchema", None) or {"type": "object", "properties": {}}
+        out.append(
+            {
+                "name": t.name,
+                "description": (t.description or "").strip(),
+                "input_schema": schema,
+                "min_role": TOOL_MINIMUM_ROLE.get(t.name, "viewer"),
+            }
+        )
+    return _ok(out)
+
+
+async def call_tool(request: Request) -> JSONResponse:
+    """Invoke a registered MCP tool by name with an arguments dict.
+
+    Body shape::
+
+        {"name": "list_dashboards", "arguments": {"tags": ["prod"], "limit": 20}}
+
+    Role enforcement, pooling, and retries all apply exactly as if the call
+    came in through the SSE transport.
+    """
+    try:
+        body = await request.json()
+    except Exception as exc:  # noqa: BLE001
+        return _err("ValueError", f"invalid JSON body: {exc}", 400)
+
+    name = body.get("name")
+    args = body.get("arguments") or {}
+    if not name or not isinstance(name, str):
+        return _err("ValueError", "body must include 'name'", 400)
+    if not isinstance(args, dict):
+        return _err("ValueError", "'arguments' must be an object", 400)
+
+    fn = _TOOL_DISPATCH.get(name)
+    if fn is None:
+        return _err("UnknownTool", f"no such tool: {name}", 404)
+
+    return await _call_tool(fn, **args)
+
+
 def routes() -> list[Route]:
     """Return the list of ``/api/*`` routes to mount in the Starlette app."""
     return [
@@ -297,4 +374,6 @@ def routes() -> list[Route]:
         Route("/api/folders", list_folders),
         Route("/api/health", health_check),
         Route("/api/info", get_server_info_tool),
+        Route("/api/tools", list_tools),
+        Route("/api/tools/call", call_tool, methods=["POST"]),
     ]

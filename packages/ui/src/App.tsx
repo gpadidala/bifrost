@@ -12,9 +12,18 @@ import {
   type RoleName,
   type ServerInfo,
 } from "./api";
-import { usePersistedStore } from "./store";
+import { ChatPage } from "./Chat";
+import { usePersistedStore, type LLMConfig, type LLMProvider } from "./store";
 
-type Tab = "overview" | "dashboards" | "datasources" | "folders";
+type Tab = "overview" | "chat" | "dashboards" | "datasources" | "folders";
+
+const ANTHROPIC_MODELS = [
+  "claude-opus-4-5",
+  "claude-sonnet-4-5-20250929",
+  "claude-sonnet-4-20250514",
+  "claude-haiku-4-5",
+];
+const OPENAI_MODELS = ["gpt-4o", "gpt-4o-mini", "o3", "o4-mini"];
 
 interface Toast {
   id: number;
@@ -172,10 +181,19 @@ export function App() {
       </header>
 
       <aside className="sidebar">
-        <h2>Resources</h2>
+        <h2>Workspace</h2>
         <button className={`nav-item ${tab === "overview" ? "active" : ""}`} onClick={() => setTab("overview")}>
           <span className="icon">◆</span>Overview
         </button>
+        <button className={`nav-item ${tab === "chat" ? "active" : ""}`} onClick={() => setTab("chat")}>
+          <span className="icon">✦</span>AI Chat
+          {store.llm.apiKey ? (
+            <span className="count">{store.llm.provider === "anthropic" ? "C" : "O"}</span>
+          ) : (
+            <span className="count" style={{ color: "var(--err)" }}>!</span>
+          )}
+        </button>
+        <h2>Resources</h2>
         <button className={`nav-item ${tab === "dashboards" ? "active" : ""}`} onClick={() => setTab("dashboards")}>
           <span className="icon">▦</span>Dashboards <span className="count">{dashboards.length}</span>
         </button>
@@ -214,24 +232,28 @@ export function App() {
         </div>
       </aside>
 
-      <main className="main">
-        <h1 className="page-title">
-          {tab === "overview" && "Overview"}
-          {tab === "dashboards" && "Dashboards"}
-          {tab === "datasources" && "Datasources"}
-          {tab === "folders" && "Folders"}
-        </h1>
-        <p className="page-sub">
-          Connected to <span className="mono">{store.activeServer.url}</span> ·{" "}
-          <span className="mono">{info?.active_environment ?? "—"}</span> /{" "}
-          <span className="mono">{info?.active_role ?? "—"}</span>
-          {health && (
-            <>
-              {" · "}
-              <span className="mono">Grafana {health.version}</span>
-            </>
-          )}
-        </p>
+      <main className="main" style={tab === "chat" ? { padding: 0, overflow: "hidden" } : undefined}>
+        {tab !== "chat" && (
+          <>
+            <h1 className="page-title">
+              {tab === "overview" && "Overview"}
+              {tab === "dashboards" && "Dashboards"}
+              {tab === "datasources" && "Datasources"}
+              {tab === "folders" && "Folders"}
+            </h1>
+            <p className="page-sub">
+              Connected to <span className="mono">{store.activeServer.url}</span> ·{" "}
+              <span className="mono">{info?.active_environment ?? "—"}</span> /{" "}
+              <span className="mono">{info?.active_role ?? "—"}</span>
+              {health && (
+                <>
+                  {" · "}
+                  <span className="mono">Grafana {health.version}</span>
+                </>
+              )}
+            </p>
+          </>
+        )}
 
         {error && <div className="error-box">✗ {error}</div>}
         {loading && !info && <div className="loading">Loading Bifröst state…</div>}
@@ -239,6 +261,7 @@ export function App() {
         {info && tab === "overview" && (
           <OverviewTab info={info} health={health} dashboards={dashboards} datasources={datasources} folders={folders} />
         )}
+        {tab === "chat" && <ChatPage client={client} />}
         {info && tab === "dashboards" && <DashboardsTab dashboards={dashboards} />}
         {info && tab === "datasources" && <DatasourcesTab datasources={datasources} />}
         {info && tab === "folders" && <FoldersTab folders={folders} />}
@@ -553,6 +576,10 @@ function SettingsDrawer({
           </button>
         </div>
         <div className="drawer-body">
+          <LLMConfigSection />
+
+          <hr style={{ border: "none", borderTop: "1px solid var(--border-1)", margin: "28px 0" }} />
+
           <h3 style={{ fontSize: 11, textTransform: "uppercase", letterSpacing: "0.09em", color: "var(--fg-2)", margin: "0 0 12px" }}>
             MCP Servers
           </h3>
@@ -830,6 +857,135 @@ function TokenField({
       <span className={`role-label ${role}`}>{role}</span>
       <input type="password" value={value} onChange={(e) => onChange(e.target.value)} placeholder="glsa_…" autoComplete="off" />
       <span className={`state ${stateClass}`}>{state}</span>
+    </div>
+  );
+}
+
+// ─────────────────────────────────────────────────────────────────────────────
+// LLM config section in the Settings drawer
+// ─────────────────────────────────────────────────────────────────────────────
+
+function LLMConfigSection() {
+  const store = usePersistedStore();
+  const llm = store.llm;
+  const set = (patch: Partial<LLMConfig>) => store.setLLM(patch);
+
+  const models = llm.provider === "anthropic" ? ANTHROPIC_MODELS : OPENAI_MODELS;
+  const modelIncluded = models.includes(llm.model);
+
+  const selectStyle: React.CSSProperties = {
+    background: "var(--bg-2)",
+    border: "1px solid var(--border-2)",
+    borderRadius: 7,
+    padding: "10px 13px",
+    color: "var(--fg-0)",
+    fontFamily: "var(--font-mono)",
+    fontSize: 12.5,
+  };
+
+  return (
+    <div>
+      <h3 style={{ fontSize: 11, textTransform: "uppercase", letterSpacing: "0.09em", color: "var(--fg-2)", margin: "0 0 4px" }}>
+        LLM
+      </h3>
+      <p className="muted" style={{ fontSize: 12, marginTop: 0, marginBottom: 18 }}>
+        Pick an LLM provider and paste your API key. The key lives in your browser's localStorage and is sent
+        directly to Anthropic/OpenAI — the Bifröst backend never sees it. Tool calls still route through Bifröst so
+        role enforcement applies.
+      </p>
+
+      <div className="env-card">
+        <div className="field-row">
+          <div className="field">
+            <label>Provider</label>
+            <select
+              value={llm.provider}
+              onChange={(e) => {
+                const provider = e.target.value as LLMProvider;
+                const defaultModel = provider === "anthropic" ? ANTHROPIC_MODELS[0]! : OPENAI_MODELS[0]!;
+                set({ provider, model: defaultModel });
+              }}
+              style={selectStyle}
+            >
+              <option value="anthropic">Anthropic (Claude)</option>
+              <option value="openai">OpenAI (GPT)</option>
+            </select>
+          </div>
+          <div className="field">
+            <label>Model</label>
+            <select value={llm.model} onChange={(e) => set({ model: e.target.value })} style={selectStyle}>
+              {!modelIncluded && <option value={llm.model}>{llm.model}</option>}
+              {models.map((m) => (
+                <option key={m} value={m}>
+                  {m}
+                </option>
+              ))}
+            </select>
+          </div>
+        </div>
+
+        <div className="field">
+          <label>API key</label>
+          <input
+            type="password"
+            placeholder={llm.provider === "anthropic" ? "sk-ant-…" : "sk-proj-…"}
+            value={llm.apiKey}
+            onChange={(e) => set({ apiKey: e.target.value })}
+            autoComplete="off"
+          />
+        </div>
+
+        <div className="field">
+          <label>System prompt</label>
+          <textarea
+            value={llm.systemPrompt}
+            onChange={(e) => set({ systemPrompt: e.target.value })}
+            rows={6}
+            style={{
+              background: "var(--bg-2)",
+              border: "1px solid var(--border-2)",
+              borderRadius: 7,
+              padding: "10px 13px",
+              color: "var(--fg-0)",
+              fontFamily: "var(--font-mono)",
+              fontSize: 11.5,
+              lineHeight: 1.6,
+              resize: "vertical",
+            }}
+          />
+        </div>
+
+        <div className="field-row">
+          <div className="field">
+            <label>Max tokens</label>
+            <input
+              type="number"
+              value={llm.maxTokens}
+              min={256}
+              max={32768}
+              onChange={(e) => set({ maxTokens: Number(e.target.value) })}
+            />
+          </div>
+          <div className="field">
+            <label>Temperature</label>
+            <input
+              type="number"
+              value={llm.temperature}
+              min={0}
+              max={1}
+              step={0.05}
+              onChange={(e) => set({ temperature: Number(e.target.value) })}
+            />
+          </div>
+        </div>
+
+        <div style={{ marginTop: 4 }}>
+          <span className={`badge ${llm.apiKey ? "ok" : "err"}`}>
+            <span className="dot" />
+            {llm.apiKey ? "key configured" : "no key"}
+          </span>
+        </div>
+      </div>
     </div>
   );
 }
