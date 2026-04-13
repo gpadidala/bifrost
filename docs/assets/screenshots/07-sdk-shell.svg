@@ -1,35 +1,43 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 560 360">
-  <rect width="560" height="360" rx="8" fill="#0d0d12"/>
-  <rect width="560" height="36" rx="8" fill="#0f172a"/>
-  <rect y="28" width="560" height="8" fill="#0f172a"/>
-  <circle cx="18" cy="18" r="5.5" fill="#ef4444" opacity="0.8"/>
-  <circle cx="36" cy="18" r="5.5" fill="#eab308" opacity="0.8"/>
-  <circle cx="54" cy="18" r="5.5" fill="#22c55e" opacity="0.8"/>
-  <text x="280" y="22" text-anchor="middle" font-family="monospace,Courier,sans-serif" font-size="11" fill="#6b7280">grafana-sdk shell &#8212; Bifr&#246;st SDK REPL</text>
-  <!-- Terminal output -->
-  <rect x="0" y="36" width="560" height="288" fill="#030712"/>
-  <!-- Welcome banner -->
-  <text x="20" y="64" font-family="monospace,Courier,sans-serif" font-size="10" fill="#F46800">&#x2022; Bifr&#246;st SDK v1.3.0 &#x2014; Interactive Shell</text>
-  <text x="20" y="80" font-family="monospace,Courier,sans-serif" font-size="10" fill="#6b7280">  env: dev  role: editor  transport: http</text>
-  <text x="20" y="96" font-family="monospace,Courier,sans-serif" font-size="10" fill="#6b7280">  Type help() for available commands.</text>
-  <!-- Blank line -->
-  <!-- REPL prompt 1 -->
-  <text x="20" y="120" font-family="monospace,Courier,sans-serif" font-size="10" fill="#22c55e">&#x276F;&#x276F;&#x276F;</text>
-  <text x="44" y="120" font-family="monospace,Courier,sans-serif" font-size="10" fill="#f1f5f9">g.list_dashboards(tags=['production'])</text>
-  <!-- Result -->
-  <text x="20" y="136" font-family="monospace,Courier,sans-serif" font-size="10" fill="#3b82f6">[</text>
-  <text x="32" y="150" font-family="monospace,Courier,sans-serif" font-size="10" fill="#9ca3af">&#x7B;'uid': 'cpu-overview', 'title': 'CPU Overview', 'tags': ['production']&#x7D;,</text>
-  <text x="32" y="164" font-family="monospace,Courier,sans-serif" font-size="10" fill="#9ca3af">&#x7B;'uid': 'mem-usage', 'title': 'Memory Usage', 'tags': ['production']&#x7D;,</text>
-  <text x="20" y="178" font-family="monospace,Courier,sans-serif" font-size="10" fill="#3b82f6">]</text>
-  <!-- REPL prompt 2 -->
-  <text x="20" y="198" font-family="monospace,Courier,sans-serif" font-size="10" fill="#22c55e">&#x276F;&#x276F;&#x276F;</text>
-  <text x="44" y="198" font-family="monospace,Courier,sans-serif" font-size="10" fill="#f1f5f9">g.health_check()</text>
-  <text x="20" y="214" font-family="monospace,Courier,sans-serif" font-size="10" fill="#22c55e">&#x2713; Grafana dev/editor: ok (12ms)</text>
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 560 420" width="560" height="420" role="img" aria-label="SDK interactive REPL shell">
+  <rect width="560" height="420" fill="#0d0d12"/>
+  <rect width="560" height="40" fill="#111827"/>
+  <rect width="560" height="1" y="40" fill="#1e2333"/>
+  <circle cx="20" cy="20" r="6" fill="#ef4444"/>
+  <circle cx="38" cy="20" r="6" fill="#f59e0b"/>
+  <circle cx="56" cy="20" r="6" fill="#22c55e"/>
+  <text x="280" y="25" font-family="'JetBrains Mono',monospace" font-size="12" fill="#64748b" text-anchor="middle">grafana-sdk shell --env dev</text>
+  <!-- Terminal content -->
+  <text x="20" y="68" font-family="'JetBrains Mono',monospace" font-size="11" fill="#22c55e">Bifröst SDK v1.3.0  •  env=dev  •  role=viewer</text>
+  <text x="20" y="86" font-family="'JetBrains Mono',monospace" font-size="11" fill="#475569">Type help() for available commands. Ctrl+D to exit.</text>
+  <text x="20" y="104" font-family="'JetBrains Mono',monospace" font-size="11" fill="#475569">────────────────────────────────────────────────</text>
+  <!-- REPL line 1 -->
+  <text x="20" y="124" font-family="'JetBrains Mono',monospace" font-size="12" fill="#f59e0b">In [1]: </text>
+  <text x="80" y="124" font-family="'JetBrains Mono',monospace" font-size="12" fill="#e2e8f0">dashboards = await client.list_dashboards()</text>
+  <!-- Output -->
+  <text x="20" y="144" font-family="'JetBrains Mono',monospace" font-size="12" fill="#64748b">Out[1]: </text>
+  <text x="80" y="144" font-family="'JetBrains Mono',monospace" font-size="12" fill="#94a3b8">[{'uid': 'cpu-01', 'title': 'CPU Overview', ...},</text>
+  <text x="80" y="160" font-family="'JetBrains Mono',monospace" font-size="12" fill="#94a3b8"> {'uid': 'mem-02', 'title': 'Memory Usage', ...},</text>
+  <text x="80" y="176" font-family="'JetBrains Mono',monospace" font-size="12" fill="#94a3b8"> {'uid': 'disk-03', 'title': 'Disk I/O', ...}]</text>
+  <!-- REPL line 2 -->
+  <text x="20" y="204" font-family="'JetBrains Mono',monospace" font-size="12" fill="#f59e0b">In [2]: </text>
+  <text x="80" y="204" font-family="'JetBrains Mono',monospace" font-size="12" fill="#e2e8f0">len(dashboards)</text>
+  <text x="20" y="224" font-family="'JetBrains Mono',monospace" font-size="12" fill="#64748b">Out[2]: </text>
+  <text x="80" y="224" font-family="'JetBrains Mono',monospace" font-size="12" fill="#3b82f6">3</text>
+  <!-- REPL line 3 -->
+  <text x="20" y="252" font-family="'JetBrains Mono',monospace" font-size="12" fill="#f59e0b">In [3]: </text>
+  <text x="80" y="252" font-family="'JetBrains Mono',monospace" font-size="12" fill="#e2e8f0">health = await client.get_health()</text>
+  <text x="20" y="272" font-family="'JetBrains Mono',monospace" font-size="12" fill="#64748b">Out[3]: </text>
+  <text x="80" y="272" font-family="'JetBrains Mono',monospace" font-size="12" fill="#94a3b8">{'database': 'ok', 'version': '11.4.0', 'commit': 'abc123'}</text>
+  <!-- REPL line 4 -->
+  <text x="20" y="300" font-family="'JetBrains Mono',monospace" font-size="12" fill="#f59e0b">In [4]: </text>
+  <text x="80" y="300" font-family="'JetBrains Mono',monospace" font-size="12" fill="#e2e8f0">result = await client.query_datasource(</text>
+  <text x="80" y="316" font-family="'JetBrains Mono',monospace" font-size="12" fill="#e2e8f0">    <tspan fill="#22c55e">"prom-1"</tspan>, <tspan fill="#22c55e">"rate(http_requests_total[5m])"</tspan></text>
+  <text x="80" y="332" font-family="'JetBrains Mono',monospace" font-size="12" fill="#e2e8f0">)</text>
   <!-- Active prompt -->
-  <text x="20" y="234" font-family="monospace,Courier,sans-serif" font-size="10" fill="#22c55e">&#x276F;&#x276F;&#x276F;</text>
-  <rect x="44" y="225" width="8" height="12" rx="1" fill="#f1f5f9" opacity="0.7"/>
-  <!-- Badge -->
-  <rect x="68" y="300" width="424" height="22" fill="#030712" stroke="#1f2937" stroke-width="1"/>
-  <rect x="196" y="308" width="220" height="22" rx="11" fill="#1a0e00" stroke="#F46800" stroke-width="1" opacity="0.8"/>
-  <text x="306" y="323" text-anchor="middle" font-family="system-ui,Arial,sans-serif" font-size="10" font-weight="600" letter-spacing="0.5" fill="#F46800">SCREENSHOT PLACEHOLDER</text>
+  <text x="20" y="360" font-family="'JetBrains Mono',monospace" font-size="12" fill="#f59e0b">In [5]: </text>
+  <rect x="80" y="348" width="8" height="16" rx="1" fill="#e2e8f0" opacity="0.8"/>
+  <!-- Footer -->
+  <rect x="0" y="400" width="560" height="20" fill="#111827"/>
+  <text x="20" y="414" font-family="'JetBrains Mono',monospace" font-size="10" fill="#475569">grafana_mcp_sdk 1.3.0  •  httpx/0.27  •  python 3.11</text>
 </svg>

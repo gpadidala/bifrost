@@ -1,47 +1,47 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 560 360">
-  <rect width="560" height="360" rx="8" fill="#0d0d12"/>
-  <rect width="560" height="36" rx="8" fill="#0f172a"/>
-  <rect y="28" width="560" height="8" fill="#0f172a"/>
-  <circle cx="18" cy="18" r="5.5" fill="#ef4444" opacity="0.8"/>
-  <circle cx="36" cy="18" r="5.5" fill="#eab308" opacity="0.8"/>
-  <circle cx="54" cy="18" r="5.5" fill="#22c55e" opacity="0.8"/>
-  <text x="280" y="22" text-anchor="middle" font-family="system-ui,Arial,sans-serif" font-size="11" fill="#6b7280">Bifr&#246;st &#8212; Connection Config</text>
-  <!-- Sidebar -->
-  <rect x="0" y="36" width="52" height="324" fill="#080d18"/>
-  <rect x="14" y="64" width="24" height="3" rx="1.5" fill="#1f2937"/>
-  <rect x="14" y="100" width="24" height="3" rx="1.5" fill="#F46800" opacity="0.8"/>
-  <rect x="14" y="136" width="24" height="3" rx="1.5" fill="#1f2937"/>
-  <!-- Three env cards -->
-  <!-- dev card (connected green) -->
-  <rect x="68" y="50" width="148" height="90" rx="6" fill="#0f172a" stroke="#22c55e" stroke-width="1.5"/>
-  <text x="84" y="74" font-family="system-ui,Arial,sans-serif" font-size="11" font-weight="600" fill="#f1f5f9">dev</text>
-  <rect x="84" y="82" width="52" height="3" rx="1.5" fill="#1f2937"/>
-  <rect x="84" y="90" width="40" height="3" rx="1.5" fill="#1f2937"/>
-  <circle cx="192" cy="68" r="5" fill="#22c55e"/>
-  <text x="200" y="72" font-family="system-ui,Arial,sans-serif" font-size="9" fill="#22c55e">Connected</text>
-  <rect x="84" y="104" width="30" height="14" rx="7" fill="#22c55e" opacity="0.15" stroke="#22c55e" stroke-width="0.8"/>
-  <text x="99" y="114" text-anchor="middle" font-family="system-ui,Arial,sans-serif" font-size="8" fill="#22c55e">V</text>
-  <rect x="118" y="104" width="30" height="14" rx="7" fill="#22c55e" opacity="0.15" stroke="#22c55e" stroke-width="0.8"/>
-  <text x="133" y="114" text-anchor="middle" font-family="system-ui,Arial,sans-serif" font-size="8" fill="#22c55e">E</text>
-  <rect x="152" y="104" width="30" height="14" rx="7" fill="#22c55e" opacity="0.15" stroke="#22c55e" stroke-width="0.8"/>
-  <text x="167" y="114" text-anchor="middle" font-family="system-ui,Arial,sans-serif" font-size="8" fill="#22c55e">A</text>
-  <!-- perf card (untested) -->
-  <rect x="228" y="50" width="148" height="90" rx="6" fill="#0f172a" stroke="#374151" stroke-width="1"/>
-  <text x="244" y="74" font-family="system-ui,Arial,sans-serif" font-size="11" font-weight="600" fill="#f1f5f9">perf</text>
-  <rect x="244" y="82" width="52" height="3" rx="1.5" fill="#1f2937"/>
-  <rect x="244" y="90" width="40" height="3" rx="1.5" fill="#1f2937"/>
-  <circle cx="352" cy="68" r="5" fill="#6b7280"/>
-  <text x="360" y="72" font-family="system-ui,Arial,sans-serif" font-size="9" fill="#6b7280">Untested</text>
-  <!-- prod card (untested) -->
-  <rect x="388" y="50" width="148" height="90" rx="6" fill="#0f172a" stroke="#374151" stroke-width="1"/>
-  <text x="404" y="74" font-family="system-ui,Arial,sans-serif" font-size="11" font-weight="600" fill="#f1f5f9">prod</text>
-  <rect x="404" y="82" width="52" height="3" rx="1.5" fill="#1f2937"/>
-  <rect x="404" y="90" width="40" height="3" rx="1.5" fill="#1f2937"/>
-  <circle cx="512" cy="68" r="5" fill="#6b7280"/>
-  <text x="520" y="72" font-family="system-ui,Arial,sans-serif" font-size="9" fill="#6b7280">Untested</text>
-  <!-- Central title + badge -->
-  <text x="306" y="210" text-anchor="middle" font-family="system-ui,Arial,sans-serif" font-size="20" font-weight="600" fill="#f1f5f9">Connection Config</text>
-  <text x="306" y="234" text-anchor="middle" font-family="system-ui,Arial,sans-serif" font-size="12" fill="#6b7280">One card per env &#xB7; live ping per role</text>
-  <rect x="196" y="252" width="220" height="28" rx="14" fill="#1a0e00" stroke="#F46800" stroke-width="1" opacity="0.8"/>
-  <text x="306" y="270" text-anchor="middle" font-family="system-ui,Arial,sans-serif" font-size="10" font-weight="600" letter-spacing="0.5" fill="#F46800">SCREENSHOT PLACEHOLDER</text>
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 560 420" width="560" height="420" role="img" aria-label="Connection Config panel">
+  <rect width="560" height="420" fill="#0d0d12"/>
+  <!-- Window chrome -->
+  <rect width="560" height="40" fill="#111827"/>
+  <rect width="560" height="1" y="40" fill="#1e2333"/>
+  <circle cx="20" cy="20" r="6" fill="#ef4444"/>
+  <circle cx="38" cy="20" r="6" fill="#f59e0b"/>
+  <circle cx="56" cy="20" r="6" fill="#22c55e"/>
+  <text x="280" y="25" font-family="'IBM Plex Sans',system-ui,sans-serif" font-size="12" fill="#64748b" text-anchor="middle">Connection Config</text>
+  <!-- Env selector tabs -->
+  <rect x="16" y="56" width="56" height="26" rx="5" fill="#f59e0b"/>
+  <text x="44" y="73" font-family="'JetBrains Mono',monospace" font-size="11" fill="#0d0d12" text-anchor="middle" font-weight="700">dev</text>
+  <rect x="80" y="56" width="56" height="26" rx="5" fill="#1e2333"/>
+  <text x="108" y="73" font-family="'JetBrains Mono',monospace" font-size="11" fill="#64748b" text-anchor="middle">perf</text>
+  <rect x="144" y="56" width="56" height="26" rx="5" fill="#1e2333"/>
+  <text x="172" y="73" font-family="'JetBrains Mono',monospace" font-size="11" fill="#64748b" text-anchor="middle">prod</text>
+  <!-- Form card -->
+  <rect x="16" y="92" width="528" height="300" rx="8" fill="#111827" stroke="#1e2333" stroke-width="1"/>
+  <!-- Grafana URL field -->
+  <text x="32" y="120" font-family="'IBM Plex Sans',system-ui,sans-serif" font-size="11" fill="#94a3b8">Grafana URL</text>
+  <rect x="32" y="126" width="496" height="32" rx="6" fill="#0d0d12" stroke="#f59e0b" stroke-width="1"/>
+  <text x="44" y="147" font-family="'JetBrains Mono',monospace" font-size="12" fill="#e2e8f0">http://localhost:3000</text>
+  <!-- TLS row -->
+  <rect x="32" y="170" width="14" height="14" rx="3" fill="#f59e0b"/>
+  <text x="52" y="181" font-family="'IBM Plex Sans',system-ui,sans-serif" font-size="12" fill="#94a3b8">Verify TLS</text>
+  <!-- Role selector -->
+  <text x="32" y="210" font-family="'IBM Plex Sans',system-ui,sans-serif" font-size="11" fill="#94a3b8">Active Role</text>
+  <rect x="32" y="216" width="100" height="28" rx="14" fill="#0d0d12" stroke="#22c55e" stroke-width="1"/>
+  <circle cx="50" cy="230" r="5" fill="#22c55e"/>
+  <text x="72" y="234" font-family="'JetBrains Mono',monospace" font-size="11" fill="#22c55e">viewer</text>
+  <rect x="142" y="216" width="100" height="28" rx="14" fill="#0d0d12" stroke="#1e2333" stroke-width="1"/>
+  <text x="192" y="234" font-family="'JetBrains Mono',monospace" font-size="11" fill="#475569" text-anchor="middle">editor</text>
+  <rect x="252" y="216" width="100" height="28" rx="14" fill="#0d0d12" stroke="#1e2333" stroke-width="1"/>
+  <text x="302" y="234" font-family="'JetBrains Mono',monospace" font-size="11" fill="#475569" text-anchor="middle">admin</text>
+  <!-- Token fields -->
+  <text x="32" y="264" font-family="'IBM Plex Sans',system-ui,sans-serif" font-size="11" fill="#94a3b8">Viewer Token</text>
+  <rect x="32" y="270" width="496" height="28" rx="6" fill="#0d0d12" stroke="#1e2333" stroke-width="1"/>
+  <text x="44" y="288" font-family="'JetBrains Mono',monospace" font-size="11" fill="#475569">glsa_dev_viewer_••••••••••••••••</text>
+  <text x="32" y="316" font-family="'IBM Plex Sans',system-ui,sans-serif" font-size="11" fill="#94a3b8">Editor Token</text>
+  <rect x="32" y="322" width="496" height="28" rx="6" fill="#0d0d12" stroke="#1e2333" stroke-width="1"/>
+  <text x="44" y="340" font-family="'JetBrains Mono',monospace" font-size="11" fill="#475569">glsa_dev_editor_••••••••••••••••</text>
+  <!-- Health bar -->
+  <rect x="16" y="400" width="528" height="12" rx="0" fill="#052e16"/>
+  <circle cx="32" cy="406" r="4" fill="#22c55e"/>
+  <text x="42" y="410" font-family="'IBM Plex Sans',system-ui,sans-serif" font-size="10" fill="#22c55e">Connected — database: ok  •  Grafana 11.4.0</text>
 </svg>

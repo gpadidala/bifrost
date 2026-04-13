@@ -1,41 +1,50 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 560 360">
-  <rect width="560" height="360" rx="8" fill="#0d0d12"/>
-  <rect width="560" height="36" rx="8" fill="#0f172a"/>
-  <rect y="28" width="560" height="8" fill="#0f172a"/>
-  <circle cx="18" cy="18" r="5.5" fill="#ef4444" opacity="0.8"/>
-  <circle cx="36" cy="18" r="5.5" fill="#eab308" opacity="0.8"/>
-  <circle cx="54" cy="18" r="5.5" fill="#22c55e" opacity="0.8"/>
-  <text x="280" y="22" text-anchor="middle" font-family="system-ui,Arial,sans-serif" font-size="11" fill="#6b7280">Bifr&#246;st &#8212; First Run: Step 5</text>
-  <!-- Step indicator -->
-  <rect x="0" y="36" width="560" height="24" fill="#080d18"/>
-  <text x="20" y="52" font-family="system-ui,Arial,sans-serif" font-size="10" fill="#F46800" font-weight="600">Step 5 of 7</text>
-  <text x="100" y="52" font-family="system-ui,Arial,sans-serif" font-size="10" fill="#6b7280">Click the gear icon &#x2192; LLM Settings drawer</text>
-  <!-- Dimmed main content -->
-  <rect x="0" y="60" width="380" height="300" fill="#0d0d12" opacity="0.6"/>
-  <!-- Gear icon highlight -->
-  <circle cx="516" cy="20" r="10" fill="#F46800" opacity="0.3" stroke="#F46800" stroke-width="1"/>
-  <text x="516" y="25" text-anchor="middle" font-family="system-ui,Arial,sans-serif" font-size="12" fill="#F46800">&#x2699;</text>
-  <!-- Drawer -->
-  <rect x="380" y="60" width="180" height="300" fill="#0f172a" stroke="#1f2937" stroke-width="1"/>
-  <text x="470" y="86" text-anchor="middle" font-family="system-ui,Arial,sans-serif" font-size="12" font-weight="600" fill="#f1f5f9">LLM Settings</text>
-  <text x="396" y="110" font-family="system-ui,Arial,sans-serif" font-size="9" fill="#6b7280">PROVIDER</text>
-  <rect x="396" y="116" width="148" height="22" rx="4" fill="#111827" stroke="#374151" stroke-width="1"/>
-  <text x="408" y="131" font-family="system-ui,Arial,sans-serif" font-size="10" fill="#f1f5f9">Anthropic &#x25BE;</text>
-  <text x="396" y="154" font-family="system-ui,Arial,sans-serif" font-size="9" fill="#6b7280">MODEL</text>
-  <rect x="396" y="160" width="148" height="22" rx="4" fill="#111827" stroke="#374151" stroke-width="1"/>
-  <text x="408" y="175" font-family="system-ui,Arial,sans-serif" font-size="9" fill="#f1f5f9">claude-sonnet-4 &#x25BE;</text>
-  <text x="396" y="198" font-family="system-ui,Arial,sans-serif" font-size="9" fill="#6b7280">API KEY</text>
-  <rect x="396" y="204" width="148" height="22" rx="4" fill="#111827" stroke="#F46800" stroke-width="1"/>
-  <text x="408" y="219" font-family="system-ui,Arial,sans-serif" font-size="9" fill="#F46800">Paste key here&#x2026;</text>
-  <text x="396" y="242" font-family="system-ui,Arial,sans-serif" font-size="9" fill="#6b7280">SYSTEM PROMPT</text>
-  <rect x="396" y="248" width="148" height="52" rx="4" fill="#111827" stroke="#374151" stroke-width="1"/>
-  <rect x="406" y="256" width="110" height="4" rx="2" fill="#374151" opacity="0.6"/>
-  <rect x="406" y="264" width="90" height="4" rx="2" fill="#374151" opacity="0.4"/>
-  <rect x="396" y="316" width="148" height="26" rx="13" fill="#F46800"/>
-  <text x="470" y="333" text-anchor="middle" font-family="system-ui,Arial,sans-serif" font-size="11" font-weight="600" fill="white">Save</text>
-  <!-- Left side label -->
-  <text x="190" y="190" text-anchor="middle" font-family="system-ui,Arial,sans-serif" font-size="18" font-weight="600" fill="#f1f5f9">LLM Settings</text>
-  <text x="190" y="214" text-anchor="middle" font-family="system-ui,Arial,sans-serif" font-size="11" fill="#6b7280">Provider &#xB7; Model &#xB7; API Key</text>
-  <rect x="80" y="232" width="220" height="28" rx="14" fill="#1a0e00" stroke="#F46800" stroke-width="1" opacity="0.8"/>
-  <text x="190" y="250" text-anchor="middle" font-family="system-ui,Arial,sans-serif" font-size="10" font-weight="600" letter-spacing="0.5" fill="#F46800">SCREENSHOT PLACEHOLDER</text>
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 360" width="720" height="360" role="img" aria-label="Walkthrough step 2 — LLM configuration">
+  <rect width="720" height="360" fill="#0d0d12"/>
+  <!-- Step badge -->
+  <rect x="16" y="16" width="88" height="28" rx="14" fill="#f59e0b"/>
+  <text x="60" y="35" font-family="'IBM Plex Sans',system-ui,sans-serif" font-size="12" fill="#0d0d12" text-anchor="middle" font-weight="700">Step 2 of 3</text>
+  <text x="120" y="35" font-family="'IBM Plex Sans',system-ui,sans-serif" font-size="14" fill="#e2e8f0" font-weight="600">Configure your LLM provider</text>
+  <!-- LLM config panel -->
+  <rect x="16" y="56" width="420" height="284" rx="10" fill="#111827" stroke="#1e2333" stroke-width="1"/>
+  <!-- Provider tabs -->
+  <rect x="32" y="72" width="110" height="32" rx="6" fill="#1e2333" stroke="#f59e0b" stroke-width="1"/>
+  <text x="87" y="92" font-family="'IBM Plex Sans',system-ui,sans-serif" font-size="12" fill="#f59e0b" text-anchor="middle" font-weight="600">● Anthropic</text>
+  <rect x="150" y="72" width="90" height="32" rx="6" fill="#111827" stroke="#1e2333" stroke-width="1"/>
+  <text x="195" y="92" font-family="'IBM Plex Sans',system-ui,sans-serif" font-size="12" fill="#475569" text-anchor="middle">○ OpenAI</text>
+  <rect x="248" y="72" width="90" height="32" rx="6" fill="#111827" stroke="#1e2333" stroke-width="1"/>
+  <text x="293" y="92" font-family="'IBM Plex Sans',system-ui,sans-serif" font-size="12" fill="#475569" text-anchor="middle">○ Custom</text>
+  <!-- API Key -->
+  <text x="32" y="126" font-family="'IBM Plex Sans',system-ui,sans-serif" font-size="11" fill="#94a3b8">Anthropic API Key</text>
+  <rect x="32" y="132" width="388" height="30" rx="6" fill="#0d0d12" stroke="#f59e0b" stroke-width="1"/>
+  <text x="44" y="151" font-family="'JetBrains Mono',monospace" font-size="11" fill="#475569">sk-ant-api03-••••••••••••••••••••••••••••</text>
+  <!-- Model -->
+  <text x="32" y="182" font-family="'IBM Plex Sans',system-ui,sans-serif" font-size="11" fill="#94a3b8">Model</text>
+  <rect x="32" y="188" width="250" height="30" rx="6" fill="#0d0d12" stroke="#1e2333" stroke-width="1"/>
+  <text x="44" y="207" font-family="'JetBrains Mono',monospace" font-size="11" fill="#e2e8f0">claude-sonnet-4-5</text>
+  <text x="268" y="207" font-family="monospace" font-size="14" fill="#475569">⌄</text>
+  <!-- Temp slider -->
+  <text x="296" y="182" font-family="'IBM Plex Sans',system-ui,sans-serif" font-size="11" fill="#94a3b8">Temp: 0.5</text>
+  <rect x="296" y="196" width="124" height="6" rx="3" fill="#1e2333"/>
+  <rect x="296" y="196" width="62" height="6" rx="3" fill="#f59e0b"/>
+  <circle cx="358" cy="199" r="8" fill="#f59e0b" stroke="#0d0d12" stroke-width="2"/>
+  <!-- Validation -->
+  <rect x="32" y="234" width="388" height="32" rx="6" fill="#052e16" stroke="#166534" stroke-width="1"/>
+  <circle cx="50" cy="250" r="5" fill="#22c55e"/>
+  <text x="62" y="254" font-family="'IBM Plex Sans',system-ui,sans-serif" font-size="11" fill="#22c55e">API key valid — claude-sonnet-4-5 ready</text>
+  <!-- Save -->
+  <rect x="32" y="282" width="388" height="36" rx="6" fill="#f59e0b"/>
+  <text x="226" y="305" font-family="'IBM Plex Sans',system-ui,sans-serif" font-size="13" fill="#0d0d12" text-anchor="middle" font-weight="700">Save &amp; Go to Chat →</text>
+  <!-- Callouts -->
+  <line x1="436" y1="148" x2="490" y2="148" stroke="#f59e0b" stroke-width="1" stroke-dasharray="4,3"/>
+  <rect x="490" y="116" width="214" height="64" rx="6" fill="#1a1505" stroke="#f59e0b" stroke-width="1"/>
+  <text x="506" y="136" font-family="'IBM Plex Sans',system-ui,sans-serif" font-size="11" fill="#fbbf24" font-weight="600">① API Key</text>
+  <text x="506" y="154" font-family="'IBM Plex Sans',system-ui,sans-serif" font-size="10" fill="#92400e">Get from console.anthropic.com</text>
+  <text x="506" y="170" font-family="'IBM Plex Sans',system-ui,sans-serif" font-size="10" fill="#92400e">Stored in browser only — never</text>
+  <text x="506" y="184" font-family="'IBM Plex Sans',system-ui,sans-serif" font-size="10" fill="#92400e">sent to Bifröst server.</text>
+  <line x1="436" y1="250" x2="490" y2="250" stroke="#22c55e" stroke-width="1" stroke-dasharray="4,3"/>
+  <rect x="490" y="224" width="214" height="52" rx="6" fill="#052e16" stroke="#166534" stroke-width="1"/>
+  <text x="506" y="244" font-family="'IBM Plex Sans',system-ui,sans-serif" font-size="11" fill="#22c55e" font-weight="600">② Validation</text>
+  <text x="506" y="262" font-family="'IBM Plex Sans',system-ui,sans-serif" font-size="10" fill="#16a34a">Bifröst pings the API to verify</text>
+  <text x="506" y="276" font-family="'IBM Plex Sans',system-ui,sans-serif" font-size="10" fill="#16a34a">the key before saving.</text>
 </svg>

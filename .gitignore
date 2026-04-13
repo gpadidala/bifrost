@@ -42,3 +42,6 @@ packages/ui/.vite/
 
 # Temp files
 *.tmp.*
+
+# Claude worktrees (not part of the project)
+.claude/worktrees/

@@ -1,54 +1,76 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 560 360">
-  <rect width="560" height="360" rx="8" fill="#0d0d12"/>
-  <rect width="560" height="36" rx="8" fill="#0f172a"/>
-  <rect y="28" width="560" height="8" fill="#0f172a"/>
-  <circle cx="18" cy="18" r="5.5" fill="#ef4444" opacity="0.8"/>
-  <circle cx="36" cy="18" r="5.5" fill="#eab308" opacity="0.8"/>
-  <circle cx="54" cy="18" r="5.5" fill="#22c55e" opacity="0.8"/>
-  <text x="280" y="22" text-anchor="middle" font-family="system-ui,Arial,sans-serif" font-size="11" fill="#6b7280">Bifr&#246;st &#8212; Health Status</text>
-  <!-- Sidebar -->
-  <rect x="0" y="36" width="52" height="324" fill="#080d18"/>
-  <!-- Health grid: 3 envs x 3 roles -->
-  <!-- Header row -->
-  <text x="168" y="68" text-anchor="middle" font-family="system-ui,Arial,sans-serif" font-size="10" fill="#6b7280">VIEWER</text>
-  <text x="280" y="68" text-anchor="middle" font-family="system-ui,Arial,sans-serif" font-size="10" fill="#6b7280">EDITOR</text>
-  <text x="392" y="68" text-anchor="middle" font-family="system-ui,Arial,sans-serif" font-size="10" fill="#6b7280">ADMIN</text>
-  <!-- dev row -->
-  <text x="76" y="98" font-family="system-ui,Arial,sans-serif" font-size="11" font-weight="600" fill="#f1f5f9">dev</text>
-  <rect x="120" y="80" width="96" height="30" rx="6" fill="#0f172a" stroke="#22c55e" stroke-width="1"/>
-  <circle cx="138" cy="95" r="5" fill="#22c55e"/>
-  <text x="150" y="99" font-family="system-ui,Arial,sans-serif" font-size="10" fill="#22c55e">ok 12ms</text>
-  <rect x="232" y="80" width="96" height="30" rx="6" fill="#0f172a" stroke="#22c55e" stroke-width="1"/>
-  <circle cx="250" cy="95" r="5" fill="#22c55e"/>
-  <text x="262" y="99" font-family="system-ui,Arial,sans-serif" font-size="10" fill="#22c55e">ok 14ms</text>
-  <rect x="344" y="80" width="96" height="30" rx="6" fill="#0f172a" stroke="#22c55e" stroke-width="1"/>
-  <circle cx="362" cy="95" r="5" fill="#22c55e"/>
-  <text x="374" y="99" font-family="system-ui,Arial,sans-serif" font-size="10" fill="#22c55e">ok 11ms</text>
-  <!-- perf row -->
-  <text x="76" y="140" font-family="system-ui,Arial,sans-serif" font-size="11" font-weight="600" fill="#f1f5f9">perf</text>
-  <rect x="120" y="122" width="96" height="30" rx="6" fill="#0f172a" stroke="#6b7280" stroke-width="1"/>
-  <circle cx="138" cy="137" r="5" fill="#6b7280"/>
-  <text x="150" y="141" font-family="system-ui,Arial,sans-serif" font-size="10" fill="#6b7280">untested</text>
-  <rect x="232" y="122" width="96" height="30" rx="6" fill="#0f172a" stroke="#6b7280" stroke-width="1"/>
-  <circle cx="250" cy="137" r="5" fill="#6b7280"/>
-  <text x="262" y="141" font-family="system-ui,Arial,sans-serif" font-size="10" fill="#6b7280">untested</text>
-  <rect x="344" y="122" width="96" height="30" rx="6" fill="#0f172a" stroke="#6b7280" stroke-width="1"/>
-  <circle cx="362" cy="137" r="5" fill="#6b7280"/>
-  <text x="374" y="141" font-family="system-ui,Arial,sans-serif" font-size="10" fill="#6b7280">untested</text>
-  <!-- prod row -->
-  <text x="76" y="182" font-family="system-ui,Arial,sans-serif" font-size="11" font-weight="600" fill="#f1f5f9">prod</text>
-  <rect x="120" y="164" width="96" height="30" rx="6" fill="#0f172a" stroke="#ef4444" stroke-width="1"/>
-  <circle cx="138" cy="179" r="5" fill="#ef4444"/>
-  <text x="150" y="183" font-family="system-ui,Arial,sans-serif" font-size="10" fill="#ef4444">401 unauth</text>
-  <rect x="232" y="164" width="96" height="30" rx="6" fill="#0f172a" stroke="#ef4444" stroke-width="1"/>
-  <circle cx="250" cy="179" r="5" fill="#ef4444"/>
-  <text x="262" y="183" font-family="system-ui,Arial,sans-serif" font-size="10" fill="#ef4444">401 unauth</text>
-  <rect x="344" y="164" width="96" height="30" rx="6" fill="#0f172a" stroke="#ef4444" stroke-width="1"/>
-  <circle cx="362" cy="179" r="5" fill="#ef4444"/>
-  <text x="374" y="183" font-family="system-ui,Arial,sans-serif" font-size="10" fill="#ef4444">401 unauth</text>
-  <!-- Central title + badge -->
-  <text x="306" y="240" text-anchor="middle" font-family="system-ui,Arial,sans-serif" font-size="20" font-weight="600" fill="#f1f5f9">Health Status</text>
-  <text x="306" y="264" text-anchor="middle" font-family="system-ui,Arial,sans-serif" font-size="12" fill="#6b7280">Per-env &#xB7; per-role connection badges</text>
-  <rect x="196" y="280" width="220" height="28" rx="14" fill="#1a0e00" stroke="#F46800" stroke-width="1" opacity="0.8"/>
-  <text x="306" y="298" text-anchor="middle" font-family="system-ui,Arial,sans-serif" font-size="10" font-weight="600" letter-spacing="0.5" fill="#F46800">SCREENSHOT PLACEHOLDER</text>
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 560 420" width="560" height="420" role="img" aria-label="Health status dashboard">
+  <rect width="560" height="420" fill="#0d0d12"/>
+  <rect width="560" height="40" fill="#111827"/>
+  <rect width="560" height="1" y="40" fill="#1e2333"/>
+  <circle cx="20" cy="20" r="6" fill="#ef4444"/>
+  <circle cx="38" cy="20" r="6" fill="#f59e0b"/>
+  <circle cx="56" cy="20" r="6" fill="#22c55e"/>
+  <text x="280" y="25" font-family="'IBM Plex Sans',system-ui,sans-serif" font-size="12" fill="#64748b" text-anchor="middle">Health Status</text>
+  <!-- Summary row -->
+  <rect x="16" y="52" width="160" height="72" rx="8" fill="#052e16" stroke="#166534" stroke-width="1"/>
+  <text x="96" y="80" font-family="'IBM Plex Sans',system-ui,sans-serif" font-size="28" fill="#22c55e" text-anchor="middle" font-weight="700">5/6</text>
+  <text x="96" y="98" font-family="'IBM Plex Sans',system-ui,sans-serif" font-size="11" fill="#22c55e" text-anchor="middle">environments healthy</text>
+  <rect x="188" y="52" width="160" height="72" rx="8" fill="#111827" stroke="#1e2333" stroke-width="1"/>
+  <text x="268" y="80" font-family="'IBM Plex Sans',system-ui,sans-serif" font-size="28" fill="#e2e8f0" text-anchor="middle" font-weight="700">16</text>
+  <text x="268" y="98" font-family="'IBM Plex Sans',system-ui,sans-serif" font-size="11" fill="#64748b" text-anchor="middle">MCP tools registered</text>
+  <rect x="360" y="52" width="184" height="72" rx="8" fill="#111827" stroke="#1e2333" stroke-width="1"/>
+  <text x="452" y="80" font-family="'JetBrains Mono',monospace" font-size="22" fill="#e2e8f0" text-anchor="middle" font-weight="700">11.4.0</text>
+  <text x="452" y="98" font-family="'IBM Plex Sans',system-ui,sans-serif" font-size="11" fill="#64748b" text-anchor="middle">Grafana version (dev)</text>
+  <!-- Environment table -->
+  <text x="16" y="150" font-family="'IBM Plex Sans',system-ui,sans-serif" font-size="11" fill="#64748b" font-weight="600" letter-spacing="1">ENVIRONMENT HEALTH</text>
+  <rect x="16" y="158" width="528" height="200" rx="8" fill="#111827" stroke="#1e2333" stroke-width="1"/>
+  <!-- Table header -->
+  <rect x="16" y="158" width="528" height="28" rx="8" fill="#0f1117"/>
+  <rect x="16" y="172" width="528" height="14" fill="#0f1117"/>
+  <text x="32" y="177" font-family="'IBM Plex Sans',system-ui,sans-serif" font-size="10" fill="#475569" font-weight="600">ENV</text>
+  <text x="110" y="177" font-family="'IBM Plex Sans',system-ui,sans-serif" font-size="10" fill="#475569" font-weight="600">ROLE</text>
+  <text x="210" y="177" font-family="'IBM Plex Sans',system-ui,sans-serif" font-size="10" fill="#475569" font-weight="600">STATUS</text>
+  <text x="320" y="177" font-family="'IBM Plex Sans',system-ui,sans-serif" font-size="10" fill="#475569" font-weight="600">LATENCY</text>
+  <text x="420" y="177" font-family="'IBM Plex Sans',system-ui,sans-serif" font-size="10" fill="#475569" font-weight="600">GRAFANA</text>
+  <!-- Rows -->
+  <text x="32"  y="206" font-family="'JetBrains Mono',monospace" font-size="11" fill="#e2e8f0">dev</text>
+  <text x="110" y="206" font-family="'JetBrains Mono',monospace" font-size="11" fill="#94a3b8">viewer</text>
+  <circle cx="218" cy="202" r="5" fill="#22c55e"/>
+  <text x="230" y="206" font-family="'IBM Plex Sans',system-ui,sans-serif" font-size="11" fill="#22c55e">ok</text>
+  <text x="320" y="206" font-family="'JetBrains Mono',monospace" font-size="11" fill="#94a3b8">12 ms</text>
+  <text x="420" y="206" font-family="'JetBrains Mono',monospace" font-size="11" fill="#94a3b8">11.4.0</text>
+
+  <text x="32"  y="230" font-family="'JetBrains Mono',monospace" font-size="11" fill="#e2e8f0">dev</text>
+  <text x="110" y="230" font-family="'JetBrains Mono',monospace" font-size="11" fill="#94a3b8">editor</text>
+  <circle cx="218" cy="226" r="5" fill="#22c55e"/>
+  <text x="230" y="230" font-family="'IBM Plex Sans',system-ui,sans-serif" font-size="11" fill="#22c55e">ok</text>
+  <text x="320" y="230" font-family="'JetBrains Mono',monospace" font-size="11" fill="#94a3b8">14 ms</text>
+  <text x="420" y="230" font-family="'JetBrains Mono',monospace" font-size="11" fill="#94a3b8">11.4.0</text>
+
+  <text x="32"  y="254" font-family="'JetBrains Mono',monospace" font-size="11" fill="#e2e8f0">perf</text>
+  <text x="110" y="254" font-family="'JetBrains Mono',monospace" font-size="11" fill="#94a3b8">viewer</text>
+  <circle cx="218" cy="250" r="5" fill="#22c55e"/>
+  <text x="230" y="254" font-family="'IBM Plex Sans',system-ui,sans-serif" font-size="11" fill="#22c55e">ok</text>
+  <text x="320" y="254" font-family="'JetBrains Mono',monospace" font-size="11" fill="#94a3b8">87 ms</text>
+  <text x="420" y="254" font-family="'JetBrains Mono',monospace" font-size="11" fill="#94a3b8">11.3.2</text>
+
+  <text x="32"  y="278" font-family="'JetBrains Mono',monospace" font-size="11" fill="#e2e8f0">prod</text>
+  <text x="110" y="278" font-family="'JetBrains Mono',monospace" font-size="11" fill="#94a3b8">viewer</text>
+  <circle cx="218" cy="274" r="5" fill="#22c55e"/>
+  <text x="230" y="278" font-family="'IBM Plex Sans',system-ui,sans-serif" font-size="11" fill="#22c55e">ok</text>
+  <text x="320" y="278" font-family="'JetBrains Mono',monospace" font-size="11" fill="#94a3b8">91 ms</text>
+  <text x="420" y="278" font-family="'JetBrains Mono',monospace" font-size="11" fill="#94a3b8">11.4.0</text>
+
+  <text x="32"  y="302" font-family="'JetBrains Mono',monospace" font-size="11" fill="#e2e8f0">prod</text>
+  <text x="110" y="302" font-family="'JetBrains Mono',monospace" font-size="11" fill="#94a3b8">editor</text>
+  <circle cx="218" cy="298" r="5" fill="#ef4444"/>
+  <text x="230" y="302" font-family="'IBM Plex Sans',system-ui,sans-serif" font-size="11" fill="#ef4444">401 — token rotated?</text>
+  <text x="320" y="302" font-family="'JetBrains Mono',monospace" font-size="11" fill="#475569">—</text>
+
+  <text x="32"  y="326" font-family="'JetBrains Mono',monospace" font-size="11" fill="#e2e8f0">prod</text>
+  <text x="110" y="326" font-family="'JetBrains Mono',monospace" font-size="11" fill="#94a3b8">admin</text>
+  <circle cx="218" cy="322" r="5" fill="#22c55e"/>
+  <text x="230" y="326" font-family="'IBM Plex Sans',system-ui,sans-serif" font-size="11" fill="#22c55e">ok</text>
+  <text x="320" y="326" font-family="'JetBrains Mono',monospace" font-size="11" fill="#94a3b8">94 ms</text>
+  <text x="420" y="326" font-family="'JetBrains Mono',monospace" font-size="11" fill="#94a3b8">11.4.0</text>
+  <!-- Warning -->
+  <rect x="16" y="372" width="528" height="36" rx="6" fill="#3b1015" stroke="#7f1d1d" stroke-width="1"/>
+  <text x="32" y="388" font-family="'IBM Plex Sans',system-ui,sans-serif" font-size="12" fill="#ef4444" font-weight="600">⚠  prod / editor token needs rotation</text>
+  <text x="32" y="403" font-family="'IBM Plex Sans',system-ui,sans-serif" font-size="10" fill="#b91c1c">Update GRAFANA_MCP_ENVIRONMENTS__PROD__SERVICE_ACCOUNTS__EDITOR in .env</text>
 </svg>

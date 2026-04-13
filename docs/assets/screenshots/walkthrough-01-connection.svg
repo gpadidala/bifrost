@@ -1,39 +1,43 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 560 360">
-  <rect width="560" height="360" rx="8" fill="#0d0d12"/>
-  <rect width="560" height="36" rx="8" fill="#0f172a"/>
-  <rect y="28" width="560" height="8" fill="#0f172a"/>
-  <circle cx="18" cy="18" r="5.5" fill="#ef4444" opacity="0.8"/>
-  <circle cx="36" cy="18" r="5.5" fill="#eab308" opacity="0.8"/>
-  <circle cx="54" cy="18" r="5.5" fill="#22c55e" opacity="0.8"/>
-  <text x="280" y="22" text-anchor="middle" font-family="system-ui,Arial,sans-serif" font-size="11" fill="#6b7280">Bifr&#246;st &#8212; First Run: Step 4</text>
-  <!-- Step indicator -->
-  <rect x="68" y="44" width="468" height="24" fill="#080d18"/>
-  <text x="80" y="60" font-family="system-ui,Arial,sans-serif" font-size="10" fill="#F46800" font-weight="600">Step 4 of 7</text>
-  <text x="160" y="60" font-family="system-ui,Arial,sans-serif" font-size="10" fill="#6b7280">Boot the React UI &#x2014; open localhost:5173</text>
-  <!-- Connection config UI (same as 01 but with step context) -->
-  <rect x="68" y="76" width="148" height="80" rx="6" fill="#0f172a" stroke="#22c55e" stroke-width="1.5"/>
-  <text x="84" y="98" font-family="system-ui,Arial,sans-serif" font-size="11" font-weight="600" fill="#f1f5f9">dev</text>
-  <circle cx="192" cy="92" r="5" fill="#22c55e"/>
-  <text x="200" y="96" font-family="system-ui,Arial,sans-serif" font-size="9" fill="#22c55e">Connected</text>
-  <rect x="84" y="104" width="52" height="3" rx="1.5" fill="#1f2937"/>
-  <rect x="84" y="112" width="80" height="3" rx="1.5" fill="#1f2937"/>
-  <rect x="84" y="122" width="36" height="14" rx="7" fill="#22c55e" opacity="0.15" stroke="#22c55e" stroke-width="0.8"/>
-  <text x="102" y="132" text-anchor="middle" font-family="system-ui,Arial,sans-serif" font-size="8" fill="#22c55e">V</text>
-  <rect x="124" y="122" width="36" height="14" rx="7" fill="#22c55e" opacity="0.15" stroke="#22c55e" stroke-width="0.8"/>
-  <text x="142" y="132" text-anchor="middle" font-family="system-ui,Arial,sans-serif" font-size="8" fill="#22c55e">E</text>
-  <rect x="164" y="122" width="36" height="14" rx="7" fill="#22c55e" opacity="0.15" stroke="#22c55e" stroke-width="0.8"/>
-  <text x="182" y="132" text-anchor="middle" font-family="system-ui,Arial,sans-serif" font-size="8" fill="#22c55e">A</text>
-  <rect x="228" y="76" width="148" height="80" rx="6" fill="#0f172a" stroke="#374151" stroke-width="1"/>
-  <text x="244" y="98" font-family="system-ui,Arial,sans-serif" font-size="11" font-weight="600" fill="#f1f5f9">perf</text>
-  <circle cx="352" cy="92" r="5" fill="#6b7280"/>
-  <text x="360" y="96" font-family="system-ui,Arial,sans-serif" font-size="9" fill="#6b7280">Untested</text>
-  <rect x="388" y="76" width="148" height="80" rx="6" fill="#0f172a" stroke="#374151" stroke-width="1"/>
-  <text x="404" y="98" font-family="system-ui,Arial,sans-serif" font-size="11" font-weight="600" fill="#f1f5f9">prod</text>
-  <circle cx="512" cy="92" r="5" fill="#6b7280"/>
-  <text x="520" y="96" font-family="system-ui,Arial,sans-serif" font-size="9" fill="#6b7280">Untested</text>
-  <!-- Central title + badge -->
-  <text x="306" y="218" text-anchor="middle" font-family="system-ui,Arial,sans-serif" font-size="20" font-weight="600" fill="#f1f5f9">First Run: Connection Config</text>
-  <text x="306" y="242" text-anchor="middle" font-family="system-ui,Arial,sans-serif" font-size="12" fill="#6b7280">dev card shows Connected &#x2014; perf and prod await your tokens</text>
-  <rect x="196" y="260" width="220" height="28" rx="14" fill="#1a0e00" stroke="#F46800" stroke-width="1" opacity="0.8"/>
-  <text x="306" y="278" text-anchor="middle" font-family="system-ui,Arial,sans-serif" font-size="10" font-weight="600" letter-spacing="0.5" fill="#F46800">SCREENSHOT PLACEHOLDER</text>
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 360" width="720" height="360" role="img" aria-label="Walkthrough step 1 — connection configuration">
+  <rect width="720" height="360" fill="#0d0d12"/>
+  <!-- Step badge -->
+  <rect x="16" y="16" width="88" height="28" rx="14" fill="#f59e0b"/>
+  <text x="60" y="35" font-family="'IBM Plex Sans',system-ui,sans-serif" font-size="12" fill="#0d0d12" text-anchor="middle" font-weight="700">Step 1 of 3</text>
+  <text x="120" y="35" font-family="'IBM Plex Sans',system-ui,sans-serif" font-size="14" fill="#e2e8f0" font-weight="600">Configure your Grafana connection</text>
+  <!-- Connection form -->
+  <rect x="16" y="56" width="420" height="284" rx="10" fill="#111827" stroke="#1e2333" stroke-width="1"/>
+  <!-- Env tabs -->
+  <rect x="32" y="72" width="52" height="24" rx="5" fill="#f59e0b"/>
+  <text x="58" y="88" font-family="'JetBrains Mono',monospace" font-size="11" fill="#0d0d12" text-anchor="middle" font-weight="700">dev</text>
+  <rect x="92" y="72" width="52" height="24" rx="5" fill="#1e2333"/>
+  <text x="118" y="88" font-family="'JetBrains Mono',monospace" font-size="11" fill="#475569" text-anchor="middle">perf</text>
+  <rect x="152" y="72" width="52" height="24" rx="5" fill="#1e2333"/>
+  <text x="178" y="88" font-family="'JetBrains Mono',monospace" font-size="11" fill="#475569" text-anchor="middle">prod</text>
+  <!-- URL -->
+  <text x="32" y="116" font-family="'IBM Plex Sans',system-ui,sans-serif" font-size="11" fill="#94a3b8">Grafana URL</text>
+  <rect x="32" y="122" width="388" height="30" rx="6" fill="#0d0d12" stroke="#f59e0b" stroke-width="1"/>
+  <text x="44" y="141" font-family="'JetBrains Mono',monospace" font-size="11" fill="#e2e8f0">http://localhost:3000</text>
+  <!-- Token -->
+  <text x="32" y="170" font-family="'IBM Plex Sans',system-ui,sans-serif" font-size="11" fill="#94a3b8">Viewer Token</text>
+  <rect x="32" y="176" width="388" height="30" rx="6" fill="#0d0d12" stroke="#1e2333" stroke-width="1"/>
+  <text x="44" y="195" font-family="'JetBrains Mono',monospace" font-size="11" fill="#475569">glsa_dev_viewer_••••••••••••••••</text>
+  <!-- Health OK -->
+  <rect x="32" y="220" width="388" height="36" rx="6" fill="#052e16" stroke="#166534" stroke-width="1"/>
+  <circle cx="50" cy="238" r="6" fill="#22c55e"/>
+  <text x="64" y="242" font-family="'IBM Plex Sans',system-ui,sans-serif" font-size="12" fill="#22c55e" font-weight="600">Connected — Grafana 11.4.0 — 12 ms</text>
+  <!-- Save button -->
+  <rect x="32" y="272" width="388" height="36" rx="6" fill="#f59e0b"/>
+  <text x="226" y="295" font-family="'IBM Plex Sans',system-ui,sans-serif" font-size="13" fill="#0d0d12" text-anchor="middle" font-weight="700">Save &amp; Continue →</text>
+  <!-- Annotation callouts -->
+  <line x1="436" y1="138" x2="490" y2="138" stroke="#f59e0b" stroke-width="1" stroke-dasharray="4,3"/>
+  <rect x="490" y="108" width="214" height="60" rx="6" fill="#1a1505" stroke="#f59e0b" stroke-width="1"/>
+  <text x="506" y="128" font-family="'IBM Plex Sans',system-ui,sans-serif" font-size="11" fill="#fbbf24" font-weight="600">① Grafana URL</text>
+  <text x="506" y="146" font-family="'IBM Plex Sans',system-ui,sans-serif" font-size="10" fill="#92400e">Point to your Grafana instance.</text>
+  <text x="506" y="160" font-family="'IBM Plex Sans',system-ui,sans-serif" font-size="10" fill="#92400e">Docker? Use http://grafana:3000</text>
+  <line x1="436" y1="238" x2="490" y2="238" stroke="#22c55e" stroke-width="1" stroke-dasharray="4,3"/>
+  <rect x="490" y="210" width="214" height="56" rx="6" fill="#052e16" stroke="#166534" stroke-width="1"/>
+  <text x="506" y="230" font-family="'IBM Plex Sans',system-ui,sans-serif" font-size="11" fill="#22c55e" font-weight="600">② Health check</text>
+  <text x="506" y="248" font-family="'IBM Plex Sans',system-ui,sans-serif" font-size="10" fill="#16a34a">Runs automatically on URL</text>
+  <text x="506" y="262" font-family="'IBM Plex Sans',system-ui,sans-serif" font-size="10" fill="#16a34a">change. Green = ready.</text>
 </svg>

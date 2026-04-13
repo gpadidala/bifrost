@@ -1,37 +1,43 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 560 360">
-  <rect width="560" height="360" rx="8" fill="#0d0d12"/>
-  <rect width="560" height="36" rx="8" fill="#0f172a"/>
-  <rect y="28" width="560" height="8" fill="#0f172a"/>
-  <circle cx="18" cy="18" r="5.5" fill="#ef4444" opacity="0.8"/>
-  <circle cx="36" cy="18" r="5.5" fill="#eab308" opacity="0.8"/>
-  <circle cx="54" cy="18" r="5.5" fill="#22c55e" opacity="0.8"/>
-  <text x="280" y="22" text-anchor="middle" font-family="system-ui,Arial,sans-serif" font-size="11" fill="#6b7280">Bifr&#246;st &#8212; First Run: Step 6</text>
-  <!-- Step indicator -->
-  <rect x="0" y="36" width="560" height="24" fill="#080d18"/>
-  <text x="20" y="52" font-family="system-ui,Arial,sans-serif" font-size="10" fill="#F46800" font-weight="600">Step 6 of 7</text>
-  <text x="100" y="52" font-family="system-ui,Arial,sans-serif" font-size="10" fill="#6b7280">Type &#x201C;List all dashboards in General folder&#x201D; &#x2014; watch the tool call appear</text>
-  <!-- Chat messages -->
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 360" width="720" height="360" role="img" aria-label="Walkthrough step 3 — first tool call">
+  <rect width="720" height="360" fill="#0d0d12"/>
+  <!-- Step badge -->
+  <rect x="16" y="16" width="88" height="28" rx="14" fill="#22c55e"/>
+  <text x="60" y="35" font-family="'IBM Plex Sans',system-ui,sans-serif" font-size="12" fill="#0d0d12" text-anchor="middle" font-weight="700">Step 3 of 3</text>
+  <text x="120" y="35" font-family="'IBM Plex Sans',system-ui,sans-serif" font-size="14" fill="#e2e8f0" font-weight="600">Your first AI-driven Grafana query</text>
+  <!-- Chat panel -->
+  <rect x="16" y="56" width="420" height="284" rx="10" fill="#111827" stroke="#1e2333" stroke-width="1"/>
   <!-- User message -->
-  <rect x="260" y="72" width="280" height="32" rx="8" fill="#1e3a5f"/>
-  <text x="400" y="88" text-anchor="middle" font-family="system-ui,Arial,sans-serif" font-size="10" fill="#93c5fd">List all dashboards in the General folder.</text>
-  <!-- Tool call card mid-stream (highlighted) -->
-  <rect x="20" y="116" width="520" height="56" rx="6" fill="#1a0e00" stroke="#F46800" stroke-width="2"/>
-  <rect x="20" y="116" width="520" height="26" rx="6" fill="#1a0e00"/>
-  <rect x="20" y="130" width="520" height="12" fill="#1a0e00"/>
-  <rect x="34" y="124" width="10" height="10" rx="2" fill="#F46800" opacity="0.8"/>
-  <text x="52" y="133" font-family="monospace,Courier,sans-serif" font-size="11" font-weight="700" fill="#F46800">list_dashboards</text>
-  <text x="280" y="133" font-family="system-ui,Arial,sans-serif" font-size="9" fill="#6b7280">params: {"folder_uid": "general"}</text>
-  <!-- Result indicator -->
-  <text x="34" y="158" font-family="monospace,Courier,sans-serif" font-size="10" fill="#22c55e">&#x2713; returned 7 dashboards (34ms)</text>
+  <rect x="160" y="72" width="260" height="40" rx="8" fill="#1e3a5f"/>
+  <text x="176" y="90" font-family="'IBM Plex Sans',system-ui,sans-serif" font-size="12" fill="#93c5fd">Show me all firing alerts</text>
+  <text x="176" y="106" font-family="'IBM Plex Sans',system-ui,sans-serif" font-size="10" fill="#334155">You</text>
+  <!-- Assistant thinking -->
+  <rect x="32" y="124" width="300" height="28" rx="8" fill="#111827" stroke="#1e2333" stroke-width="1"/>
+  <text x="48" y="143" font-family="'IBM Plex Sans',system-ui,sans-serif" font-size="11" fill="#64748b">Checking alert instances…</text>
+  <!-- Tool call card -->
+  <rect x="32" y="164" width="388" height="64" rx="8" fill="#0d0d12" stroke="#f59e0b" stroke-width="1"/>
+  <rect x="32" y="164" width="388" height="28" rx="8" fill="#1a1505"/>
+  <rect x="32" y="178" width="388" height="14" fill="#1a1505"/>
+  <text x="48" y="182" font-family="'JetBrains Mono',monospace" font-size="11" fill="#f59e0b" font-weight="700">⚙ list_alert_instances</text>
+  <text x="340" y="182" font-family="'IBM Plex Sans',system-ui,sans-serif" font-size="10" fill="#22c55e">✓ 2 results</text>
+  <text x="48" y="202" font-family="'JetBrains Mono',monospace" font-size="10" fill="#22c55e">HighCPU  [firing]  node=web-01</text>
+  <text x="48" y="218" font-family="'JetBrains Mono',monospace" font-size="10" fill="#f59e0b">DiskFull [pending] node=db-02</text>
   <!-- Assistant response -->
-  <rect x="20" y="184" width="360" height="56" rx="8" fill="#0f172a" stroke="#1f2937" stroke-width="1"/>
-  <rect x="32" y="192" width="220" height="5" rx="2.5" fill="#6b7280" opacity="0.5"/>
-  <rect x="32" y="202" width="300" height="5" rx="2.5" fill="#6b7280" opacity="0.4"/>
-  <rect x="32" y="212" width="180" height="5" rx="2.5" fill="#6b7280" opacity="0.4"/>
-  <rect x="32" y="222" width="260" height="5" rx="2.5" fill="#6b7280" opacity="0.3"/>
-  <!-- Central title + badge -->
-  <text x="306" y="272" text-anchor="middle" font-family="system-ui,Arial,sans-serif" font-size="20" font-weight="600" fill="#f1f5f9">First AI Tool Call</text>
-  <text x="306" y="296" text-anchor="middle" font-family="system-ui,Arial,sans-serif" font-size="12" fill="#6b7280">Tool call card appears mid-stream with params + result</text>
-  <rect x="196" y="314" width="220" height="28" rx="14" fill="#1a0e00" stroke="#F46800" stroke-width="1" opacity="0.8"/>
-  <text x="306" y="332" text-anchor="middle" font-family="system-ui,Arial,sans-serif" font-size="10" font-weight="600" letter-spacing="0.5" fill="#F46800">SCREENSHOT PLACEHOLDER</text>
+  <rect x="32" y="240" width="360" height="72" rx="8" fill="#111827" stroke="#1e2333" stroke-width="1"/>
+  <text x="48" y="260" font-family="'IBM Plex Sans',system-ui,sans-serif" font-size="12" fill="#e2e8f0">Found 2 active alerts:</text>
+  <text x="48" y="278" font-family="'IBM Plex Sans',system-ui,sans-serif" font-size="11" fill="#ef4444">🔴 HighCPU — firing on web-01</text>
+  <text x="48" y="296" font-family="'IBM Plex Sans',system-ui,sans-serif" font-size="11" fill="#f59e0b">🟡 DiskFull — pending on db-02</text>
+  <text x="48" y="308" font-family="'IBM Plex Sans',system-ui,sans-serif" font-size="10" fill="#475569">Claude  •  just now</text>
+  <!-- Callouts -->
+  <line x1="436" y1="196" x2="490" y2="196" stroke="#f59e0b" stroke-width="1" stroke-dasharray="4,3"/>
+  <rect x="490" y="156" width="214" height="80" rx="6" fill="#1a1505" stroke="#f59e0b" stroke-width="1"/>
+  <text x="506" y="178" font-family="'IBM Plex Sans',system-ui,sans-serif" font-size="11" fill="#fbbf24" font-weight="600">① Tool call card</text>
+  <text x="506" y="196" font-family="'IBM Plex Sans',system-ui,sans-serif" font-size="10" fill="#92400e">Claude automatically picked</text>
+  <text x="506" y="212" font-family="'IBM Plex Sans',system-ui,sans-serif" font-size="10" fill="#92400e">list_alert_instances from the</text>
+  <text x="506" y="228" font-family="'IBM Plex Sans',system-ui,sans-serif" font-size="10" fill="#92400e">16 registered MCP tools.</text>
+  <line x1="436" y1="278" x2="490" y2="278" stroke="#22c55e" stroke-width="1" stroke-dasharray="4,3"/>
+  <rect x="490" y="252" width="214" height="64" rx="6" fill="#052e16" stroke="#166534" stroke-width="1"/>
+  <text x="506" y="272" font-family="'IBM Plex Sans',system-ui,sans-serif" font-size="11" fill="#22c55e" font-weight="600">② Live Grafana data</text>
+  <text x="506" y="290" font-family="'IBM Plex Sans',system-ui,sans-serif" font-size="10" fill="#16a34a">Results come directly from</text>
+  <text x="506" y="306" font-family="'IBM Plex Sans',system-ui,sans-serif" font-size="10" fill="#16a34a">your Grafana alertmanager.</text>
 </svg>
