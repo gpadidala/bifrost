@@ -1,9 +1,44 @@
-__pycache__
-*.pyc
-.env
-node_modules
-.venv
+# Python
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+*.egg-info/
+*.egg
+.eggs/
 dist/
 build/
-*.egg-info
+.venv/
+venv/
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+htmlcov/
+.coverage
+coverage.xml
+
+# Environment
+.env
+*.env.local
+
+# Node / UI
+node_modules/
+.pnpm-store/
+packages/ui/dist/
+packages/ui/.vite/
+
+# macOS
 .DS_Store
+.AppleDouble
+.LSOverride
+
+# Editor
+.idea/
+*.swp
+*.swo
+
+# Docker
+*.log
+
+# Temp files
+*.tmp.*
