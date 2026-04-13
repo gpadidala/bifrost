@@ -1,0 +1,67 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 112" fill="none" role="img" aria-label="Bifröst logo">
+
+  <!--
+    Bifröst — Heimdall-inspired mark
+    The All-Seeing Guardian of the Rainbow Bridge
+
+    Design:
+      • Diamond frame  — Heimdall's shield / Norse geometric aesthetic
+      • Almond eye     — The all-seeing watcher (Heimdall sees 300 miles in any direction)
+      • Iris ring      — Depth, precision, observation
+      • Filled pupil   — Bold anchor; readable at small sizes
+      • Wordmark       — IBM Plex Sans, wide-tracked caps
+
+    Palette:
+      • Grafana orange #F46800  — primary (all elements)
+      • Transparent background  — dark + light surface compatible
+  -->
+
+  <!-- ─── Diamond frame (guardian shield) ─────────────────────────── -->
+  <polygon
+    points="100,5 150,44 100,83 50,44"
+    stroke="#F46800"
+    stroke-width="2.5"
+    stroke-linejoin="round"
+    fill="none"
+  />
+
+  <!-- ─── All-seeing eye (almond / vesica piscis) ──────────────────── -->
+  <path
+    d="M 70,44 Q 100,22 130,44 Q 100,66 70,44 Z"
+    stroke="#F46800"
+    stroke-width="2"
+    stroke-linejoin="round"
+    fill="none"
+  />
+
+  <!-- ─── Iris ring ────────────────────────────────────────────────── -->
+  <circle
+    cx="100"
+    cy="44"
+    r="11"
+    stroke="#F46800"
+    stroke-width="1.5"
+    fill="none"
+  />
+
+  <!-- ─── Pupil — bold filled dot, stays visible at 32 px ─────────── -->
+  <circle
+    cx="100"
+    cy="44"
+    r="4.5"
+    fill="#F46800"
+  />
+
+  <!-- ─── Wordmark ──────────────────────────────────────────────────── -->
+  <text
+    x="100"
+    y="101"
+    text-anchor="middle"
+    font-family="'IBM Plex Sans', 'Inter', system-ui, -apple-system, BlinkMacSystemFont, sans-serif"
+    font-size="13.5"
+    font-weight="700"
+    letter-spacing="5"
+    fill="#F46800"
+  >BIFRÖST</text>
+
+</svg>
