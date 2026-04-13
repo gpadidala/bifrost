@@ -13,9 +13,17 @@ import {
   type ServerInfo,
 } from "./api";
 import { ChatPage } from "./Chat";
+import { PythonGuide, VSCodeGuide } from "./Guides";
 import { usePersistedStore, type LLMConfig, type LLMProvider } from "./store";
 
-type Tab = "overview" | "chat" | "dashboards" | "datasources" | "folders";
+type Tab =
+  | "overview"
+  | "chat"
+  | "dashboards"
+  | "datasources"
+  | "folders"
+  | "vscode"
+  | "python";
 
 const ANTHROPIC_MODELS = [
   "claude-opus-4-5",
@@ -204,6 +212,14 @@ export function App() {
           <span className="icon">▸</span>Folders <span className="count">{folders.length}</span>
         </button>
 
+        <h2>Integrations</h2>
+        <button className={`nav-item ${tab === "vscode" ? "active" : ""}`} onClick={() => setTab("vscode")}>
+          <span className="icon">🖥</span>VSCode Setup
+        </button>
+        <button className={`nav-item ${tab === "python" ? "active" : ""}`} onClick={() => setTab("python")}>
+          <span className="icon">🐍</span>Python SDK
+        </button>
+
         <h2>Quick actions</h2>
         <button className="nav-item" onClick={() => setSettingsOpen(true)}>
           <span className="icon">⚙</span>Configure environments
@@ -233,7 +249,7 @@ export function App() {
       </aside>
 
       <main className="main" style={tab === "chat" ? { padding: 0, overflow: "hidden" } : undefined}>
-        {tab !== "chat" && (
+        {tab !== "chat" && tab !== "vscode" && tab !== "python" && (
           <>
             <h1 className="page-title">
               {tab === "overview" && "Overview"}
@@ -265,6 +281,8 @@ export function App() {
         {info && tab === "dashboards" && <DashboardsTab dashboards={dashboards} />}
         {info && tab === "datasources" && <DatasourcesTab datasources={datasources} />}
         {info && tab === "folders" && <FoldersTab folders={folders} />}
+        {tab === "vscode" && <VSCodeGuide info={info} serverUrl={store.activeServer.url} />}
+        {tab === "python" && <PythonGuide info={info} serverUrl={store.activeServer.url} />}
       </main>
 
       {settingsOpen && info && (
