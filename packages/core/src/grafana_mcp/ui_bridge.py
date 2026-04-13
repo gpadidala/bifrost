@@ -19,12 +19,14 @@ public contract — agents should use the MCP endpoints instead.
 
 from __future__ import annotations
 
+import io
 import time
+import zipfile
 from typing import Any
 
 from pydantic import BaseModel, SecretStr
 from starlette.requests import Request
-from starlette.responses import JSONResponse
+from starlette.responses import JSONResponse, Response
 from starlette.routing import Route
 
 from . import _state
@@ -361,6 +363,525 @@ async def call_tool(request: Request) -> JSONResponse:
     return await _call_tool(fn, **args)
 
 
+# ── Python SDK zip download ────────────────────────────────────────────────
+
+
+def _sdk_readme(base_url: str, env: str, role: str) -> str:
+    return f"""# Bifröst Python SDK
+
+A tiny, dependency-light Python client for the Bifröst MCP server at
+**`{base_url}`**. No MCP protocol plumbing — just plain HTTP against the
+REST bridge exposed at `/api/*`. Every call goes through the same typed
+tool functions, role enforcement, connection pool, and retry layer that
+an MCP client would use.
+
+## What's in this bundle
+
+| File | What it does |
+|------|---|
+| `bifrost_client.py`       | Synchronous client class — drop into scripts, notebooks, CI |
+| `bifrost_async.py`        | Async version for concurrent tool calls |
+| `example_quickstart.py`   | 10-line "hello world" that lists dashboards |
+| `example_parallel.py`     | Fans out 4 tool calls in parallel via asyncio |
+| `example_role_switch.py`  | Switches role mid-session to call an editor-only tool |
+| `requirements.txt`        | Pins `httpx>=0.27` |
+| `README.md`               | This file |
+
+## Install
+
+```bash
+# Unzip + create a venv
+unzip bifrost-sdk.zip
+cd bifrost-sdk
+python -m venv .venv
+source .venv/bin/activate
+
+# One dependency
+pip install -r requirements.txt
+```
+
+## Run the quick-start
+
+```bash
+python example_quickstart.py
+```
+
+Expected output (pointed at **{base_url}**, env **{env}**, role **{role}**):
+
+```
+Bifröst v1.3.0  env={env}  role={role}
+✓ Grafana <version>  db=ok
+N dashboards across M folders
+```
+
+If you get a `ConnectionError`, the Bifröst server is not reachable at
+`{base_url}`. Start it with:
+
+```bash
+grafana-mcp serve --transport sse --env {env} --role {role} --port 8765
+```
+
+## The three patterns
+
+### 1. `bifrost_client.py` — sync
+
+```python
+from bifrost_client import BifrostClient
+
+c = BifrostClient()
+print(c.server_info())
+print(len(c.list_dashboards()), "dashboards")
+print(c.call_tool("list_dashboards", tags=["production"], limit=50))
+```
+
+Good for: notebooks, CI checks, throwaway scripts.
+
+### 2. `bifrost_async.py` — async
+
+```python
+import asyncio
+from bifrost_async import BifrostAsyncClient
+
+async def main():
+    async with BifrostAsyncClient() as c:
+        info, health, dashboards = await asyncio.gather(
+            c.server_info(),
+            c.health(),
+            c.list_dashboards(),
+        )
+        print(info, health, len(dashboards))
+
+asyncio.run(main())
+```
+
+Good for: parallel tool calls, long-running services, integration with
+async frameworks (FastAPI, aiohttp).
+
+### 3. Generic `call_tool` — any MCP tool by name
+
+Both clients expose `call_tool(name, **args)` that dispatches to any of
+Bifröst's 16 MCP tools. Same role enforcement as a native MCP client:
+
+- `viewer`  — all read tools
+- `editor`  — adds `silence_alert`
+- `admin`   — adds `list_users`, `list_service_accounts`
+
+If you call a tool with insufficient role, the SDK raises
+`PermissionError` with a clear message. Switch the active role in
+Bifröst (via the UI Settings drawer or `POST /api/active`) and retry.
+
+## Configuration
+
+The clients default to the URL this bundle was generated against:
+
+- **BASE_URL:** `{base_url}`
+
+You can override at construction time:
+
+```python
+from bifrost_client import BifrostClient
+
+c = BifrostClient(base_url="http://other-host:8765")
+```
+
+## License
+
+MIT — same as Bifröst.
+
+## Regenerating this bundle
+
+The zip is served fresh each time you click the **Download SDK** button
+in the Bifröst UI (Python SDK tab). It bakes in the URL, env, and role
+of the server you're looking at, so re-downloading after changing
+active env/role gives you a pre-configured copy.
+"""
+
+
+def _sdk_sync_client(base_url: str) -> str:
+    return f'''"""Bifröst Python SDK — synchronous client.
+
+Requires: httpx>=0.27
+Install:  pip install -r requirements.txt
+"""
+from __future__ import annotations
+
+from typing import Any
+
+import httpx
+
+DEFAULT_BASE_URL = "{base_url}"
+
+
+class BifrostError(Exception):
+    """Raised when Bifröst returns ok:false."""
+
+    def __init__(self, kind: str, message: str) -> None:
+        super().__init__(f"{{kind}}: {{message}}")
+        self.kind = kind
+        self.message = message
+
+
+class BifrostClient:
+    """Synchronous client for the Bifröst REST bridge.
+
+    Every method round-trips to the Bifröst server, which in turn calls
+    the underlying MCP tool function (with role enforcement, pool reuse,
+    and retry). The client itself holds no Grafana credentials — all
+    authentication happens server-side via the configured service
+    account tokens.
+    """
+
+    def __init__(self, base_url: str = DEFAULT_BASE_URL, timeout: float = 30.0) -> None:
+        self.base_url = base_url.rstrip("/")
+        self._http = httpx.Client(base_url=self.base_url, timeout=timeout)
+
+    # ── context manager so you can `with BifrostClient() as c:` ─────────
+    def __enter__(self) -> "BifrostClient":
+        return self
+
+    def __exit__(self, *_: Any) -> None:
+        self.close()
+
+    def close(self) -> None:
+        self._http.close()
+
+    # ── low-level helpers ───────────────────────────────────────────────
+    def _get(self, path: str, params: dict | None = None) -> Any:
+        r = self._http.get(path, params=params)
+        r.raise_for_status()
+        env = r.json()
+        if not env.get("ok"):
+            raise BifrostError(env.get("error", "Error"), env.get("message", ""))
+        return env["data"]
+
+    def _post(self, path: str, body: dict) -> Any:
+        r = self._http.post(path, json=body)
+        r.raise_for_status()
+        env = r.json()
+        if not env.get("ok"):
+            raise BifrostError(env.get("error", "Error"), env.get("message", ""))
+        return env["data"]
+
+    # ── server state ────────────────────────────────────────────────────
+    def server_info(self) -> dict:
+        return self._get("/api/server-info")
+
+    def health(self) -> dict:
+        return self._get("/api/health")
+
+    # ── read tools ──────────────────────────────────────────────────────
+    def list_dashboards(
+        self,
+        *,
+        tags: list[str] | None = None,
+        folder_uid: str | None = None,
+        limit: int = 200,
+    ) -> list[dict]:
+        params: dict[str, Any] = {{"limit": limit}}
+        if folder_uid:
+            params["folder_uid"] = folder_uid
+        if tags:
+            params["tag"] = tags
+        return self._get("/api/dashboards", params=params)
+
+    def get_dashboard(self, uid: str) -> dict:
+        return self._get(f"/api/dashboards/{{uid}}")
+
+    def list_datasources(self) -> list[dict]:
+        return self._get("/api/datasources")
+
+    def list_folders(self) -> list[dict]:
+        return self._get("/api/folders")
+
+    def list_tools(self) -> list[dict]:
+        """Return the full MCP tool catalog with JSON schemas."""
+        return self._get("/api/tools")
+
+    # ── generic tool dispatch ───────────────────────────────────────────
+    def call_tool(self, name: str, /, **arguments: Any) -> Any:
+        """Call any registered MCP tool by name.
+
+        Available tools include: list_dashboards, search_dashboards,
+        get_dashboard, get_dashboard_panels, list_datasources,
+        get_datasource, query_datasource, list_folders,
+        list_alert_rules, get_alert_rule, list_alert_instances,
+        silence_alert, list_users, list_service_accounts, health_check,
+        get_server_info.
+        """
+        return self._post("/api/tools/call", {{"name": name, "arguments": arguments}})
+
+    # ── runtime configuration ───────────────────────────────────────────
+    def set_active(
+        self,
+        *,
+        environment: str | None = None,
+        role: str | None = None,
+    ) -> dict:
+        """Switch the active env / role on the Bifröst server."""
+        patch: dict[str, str] = {{}}
+        if environment:
+            patch["environment"] = environment
+        if role:
+            patch["role"] = role
+        return self._post("/api/active", patch)
+'''
+
+
+def _sdk_async_client(base_url: str) -> str:
+    return f'''"""Bifröst Python SDK — asynchronous client.
+
+Requires: httpx>=0.27
+Install:  pip install -r requirements.txt
+"""
+from __future__ import annotations
+
+from typing import Any
+
+import httpx
+
+DEFAULT_BASE_URL = "{base_url}"
+
+
+class BifrostError(Exception):
+    def __init__(self, kind: str, message: str) -> None:
+        super().__init__(f"{{kind}}: {{message}}")
+        self.kind = kind
+        self.message = message
+
+
+class BifrostAsyncClient:
+    """Async client for the Bifröst REST bridge."""
+
+    def __init__(self, base_url: str = DEFAULT_BASE_URL, timeout: float = 30.0) -> None:
+        self.base_url = base_url.rstrip("/")
+        self._http = httpx.AsyncClient(base_url=self.base_url, timeout=timeout)
+
+    async def __aenter__(self) -> "BifrostAsyncClient":
+        return self
+
+    async def __aexit__(self, *_: Any) -> None:
+        await self.close()
+
+    async def close(self) -> None:
+        await self._http.aclose()
+
+    async def _get(self, path: str, params: dict | None = None) -> Any:
+        r = await self._http.get(path, params=params)
+        r.raise_for_status()
+        env = r.json()
+        if not env.get("ok"):
+            raise BifrostError(env.get("error", "Error"), env.get("message", ""))
+        return env["data"]
+
+    async def _post(self, path: str, body: dict) -> Any:
+        r = await self._http.post(path, json=body)
+        r.raise_for_status()
+        env = r.json()
+        if not env.get("ok"):
+            raise BifrostError(env.get("error", "Error"), env.get("message", ""))
+        return env["data"]
+
+    async def server_info(self) -> dict:
+        return await self._get("/api/server-info")
+
+    async def health(self) -> dict:
+        return await self._get("/api/health")
+
+    async def list_dashboards(
+        self,
+        *,
+        tags: list[str] | None = None,
+        folder_uid: str | None = None,
+        limit: int = 200,
+    ) -> list[dict]:
+        params: dict[str, Any] = {{"limit": limit}}
+        if folder_uid:
+            params["folder_uid"] = folder_uid
+        if tags:
+            params["tag"] = tags
+        return await self._get("/api/dashboards", params=params)
+
+    async def get_dashboard(self, uid: str) -> dict:
+        return await self._get(f"/api/dashboards/{{uid}}")
+
+    async def list_datasources(self) -> list[dict]:
+        return await self._get("/api/datasources")
+
+    async def list_folders(self) -> list[dict]:
+        return await self._get("/api/folders")
+
+    async def list_tools(self) -> list[dict]:
+        return await self._get("/api/tools")
+
+    async def call_tool(self, name: str, /, **arguments: Any) -> Any:
+        return await self._post("/api/tools/call", {{"name": name, "arguments": arguments}})
+
+    async def set_active(
+        self,
+        *,
+        environment: str | None = None,
+        role: str | None = None,
+    ) -> dict:
+        patch: dict[str, str] = {{}}
+        if environment:
+            patch["environment"] = environment
+        if role:
+            patch["role"] = role
+        return await self._post("/api/active", patch)
+'''
+
+
+def _sdk_example_quickstart(base_url: str, env: str, role: str) -> str:
+    return f'''"""Quick-start — lists dashboards in the active environment.
+
+Run:  python example_quickstart.py
+"""
+from bifrost_client import BifrostClient
+
+# Defaults to {base_url} but you can override
+with BifrostClient() as c:
+    info = c.server_info()
+    print(f"Bifröst v{{info['version']}}  env={{info['active_environment']}}  role={{info['active_role']}}")
+
+    health = c.health()
+    print(f"{{'✓' if health['database'] == 'ok' else '✗'}} Grafana {{health['version']}}  db={{health['database']}}")
+
+    dashboards = c.list_dashboards(limit=500)
+    folders = {{d.get("folder_title") or "General" for d in dashboards}}
+    print(f"{{len(dashboards)}} dashboards across {{len(folders)}} folders")
+
+    datasources = c.list_datasources()
+    print(f"{{len(datasources)}} datasources:")
+    for ds in datasources[:10]:
+        marker = " ★" if ds.get("is_default") else ""
+        print(f"  • {{ds['name']}}  ({{ds['type']}}){{marker}}")
+'''
+
+
+def _sdk_example_parallel(base_url: str) -> str:
+    return f'''"""Parallel example — fans out 4 tool calls via asyncio.gather.
+
+Run:  python example_parallel.py
+"""
+import asyncio
+
+from bifrost_async import BifrostAsyncClient
+
+
+async def main() -> None:
+    async with BifrostAsyncClient() as c:
+        info, health, dashboards, datasources = await asyncio.gather(
+            c.server_info(),
+            c.health(),
+            c.list_dashboards(limit=500),
+            c.list_datasources(),
+        )
+        print(f"Bifröst  env={{info['active_environment']}}  role={{info['active_role']}}")
+        print(f"Grafana  v{{health['version']}}  db={{health['database']}}")
+        print(f"{{len(dashboards)}} dashboards · {{len(datasources)}} datasources")
+
+        # Fan out to get_dashboard in parallel for the first 5
+        detailed = await asyncio.gather(
+            *(c.get_dashboard(d["uid"]) for d in dashboards[:5])
+        )
+        print(f"Fetched {{len(detailed)}} full dashboards in parallel")
+
+
+if __name__ == "__main__":
+    asyncio.run(main())
+'''
+
+
+def _sdk_example_role_switch() -> str:
+    return '''"""Role-switch example — elevate to editor to silence an alert.
+
+Run:  python example_role_switch.py
+
+NOTE: Requires the Bifröst server to have been started with --role admin
+(or at least --role editor) so runtime role escalation is allowed.
+"""
+from bifrost_client import BifrostClient, BifrostError
+
+with BifrostClient() as c:
+    # Start in viewer mode — can only read
+    c.set_active(role="viewer")
+    print("role: viewer")
+
+    try:
+        c.call_tool(
+            "silence_alert",
+            matchers=[{"name": "alertname", "value": "HighCPU", "isEqual": True}],
+            duration_minutes=30,
+            comment="scheduled maintenance",
+        )
+    except BifrostError as exc:
+        print(f"  expected failure: {exc}")
+
+    # Elevate to editor — now the write tool works
+    c.set_active(role="editor")
+    print("role: editor")
+
+    try:
+        silence = c.call_tool(
+            "silence_alert",
+            matchers=[{"name": "alertname", "value": "HighCPU", "isEqual": True}],
+            duration_minutes=30,
+            comment="scheduled maintenance",
+        )
+        print(f"  silenced: {silence}")
+    except BifrostError as exc:
+        print(f"  silence failed: {exc}")
+    finally:
+        # Always drop back to the safest role
+        c.set_active(role="viewer")
+        print("role: viewer (restored)")
+'''
+
+
+def _sdk_requirements() -> str:
+    return "httpx>=0.27\n"
+
+
+async def download_sdk(request: Request) -> Response:
+    """Stream a zip file containing the Python SDK bundle, parameterized
+    with the live ``base_url``, env, and role of the server the user is
+    currently looking at.
+
+    Query params:
+        base_url  Override the base URL baked into the bundle. Defaults
+                  to the request's own base URL (so you get the same
+                  origin the browser is already hitting).
+    """
+    settings = _state.get_settings()
+    env = settings.active_environment
+    role = settings.active_role
+
+    base_url = request.query_params.get("base_url")
+    if not base_url:
+        base_url = str(request.base_url).rstrip("/")
+    base_url = base_url.rstrip("/")
+
+    buf = io.BytesIO()
+    with zipfile.ZipFile(buf, "w", zipfile.ZIP_DEFLATED) as zf:
+        root = "bifrost-sdk/"
+        zf.writestr(root + "README.md", _sdk_readme(base_url, env, role))
+        zf.writestr(root + "bifrost_client.py", _sdk_sync_client(base_url))
+        zf.writestr(root + "bifrost_async.py", _sdk_async_client(base_url))
+        zf.writestr(root + "example_quickstart.py", _sdk_example_quickstart(base_url, env, role))
+        zf.writestr(root + "example_parallel.py", _sdk_example_parallel(base_url))
+        zf.writestr(root + "example_role_switch.py", _sdk_example_role_switch())
+        zf.writestr(root + "requirements.txt", _sdk_requirements())
+
+    return Response(
+        content=buf.getvalue(),
+        media_type="application/zip",
+        headers={
+            "Content-Disposition": 'attachment; filename="bifrost-sdk.zip"',
+            "Content-Length": str(len(buf.getvalue())),
+        },
+    )
+
+
 def routes() -> list[Route]:
     """Return the list of ``/api/*`` routes to mount in the Starlette app."""
     return [
@@ -376,4 +897,5 @@ def routes() -> list[Route]:
         Route("/api/info", get_server_info_tool),
         Route("/api/tools", list_tools),
         Route("/api/tools/call", call_tool, methods=["POST"]),
+        Route("/api/sdk/download", download_sdk),
     ]

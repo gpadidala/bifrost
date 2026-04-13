@@ -380,6 +380,8 @@ GRAFANA_MCP_ENVIRONMENTS__${env.toUpperCase()}__SERVICE_ACCOUNTS__VIEWER=glsa_xx
 GRAFANA_MCP_ENVIRONMENTS__${env.toUpperCase()}__SERVICE_ACCOUNTS__EDITOR=glsa_yyy
 GRAFANA_MCP_ENVIRONMENTS__${env.toUpperCase()}__SERVICE_ACCOUNTS__ADMIN=glsa_zzz`;
 
+  const downloadUrl = `${baseUrl}/api/sdk/download?base_url=${encodeURIComponent(baseUrl)}`;
+
   return (
     <div className="guide">
       <div className="guide-header">
@@ -398,6 +400,58 @@ GRAFANA_MCP_ENVIRONMENTS__${env.toUpperCase()}__SERVICE_ACCOUNTS__ADMIN=glsa_zzz
         </span>
         <span className="badge">env: {env}</span>
         <span className="badge">role: {role}</span>
+      </div>
+
+      {/* ── Big download card ───────────────────────────────────────── */}
+      <div className="download-card">
+        <div className="download-card-icon">🐍</div>
+        <div className="download-card-body">
+          <h3>Download Python SDK</h3>
+          <p>
+            Zip bundle with a synchronous client, an async client, three ready-to-run examples, and a
+            README — all parameterized for <code>{baseUrl}</code>. Just unzip, <code>pip install -r requirements.txt</code>, and run.
+          </p>
+          <div className="download-includes">
+            <div className="download-file">
+              <span className="dl-name">bifrost_client.py</span>
+              <span className="dl-desc">sync client</span>
+            </div>
+            <div className="download-file">
+              <span className="dl-name">bifrost_async.py</span>
+              <span className="dl-desc">async client</span>
+            </div>
+            <div className="download-file">
+              <span className="dl-name">example_quickstart.py</span>
+              <span className="dl-desc">10-line hello world</span>
+            </div>
+            <div className="download-file">
+              <span className="dl-name">example_parallel.py</span>
+              <span className="dl-desc">asyncio.gather fan-out</span>
+            </div>
+            <div className="download-file">
+              <span className="dl-name">example_role_switch.py</span>
+              <span className="dl-desc">viewer → editor escalation</span>
+            </div>
+            <div className="download-file">
+              <span className="dl-name">README.md</span>
+              <span className="dl-desc">setup + usage</span>
+            </div>
+          </div>
+          <div className="download-card-actions">
+            <a className="btn primary" href={downloadUrl} download="bifrost-sdk.zip">
+              ⬇ Download bifrost-sdk.zip
+            </a>
+            <span className="muted mono" style={{ fontSize: 11 }}>
+              pre-configured for <code>{env}</code> / <code>{role}</code>
+            </span>
+          </div>
+          <CodeBlock lang="bash">{`# After downloading:
+unzip bifrost-sdk.zip
+cd bifrost-sdk
+python -m venv .venv && source .venv/bin/activate
+pip install -r requirements.txt
+python example_quickstart.py`}</CodeBlock>
+        </div>
       </div>
 
       <Step n={1} title="Prerequisites">
