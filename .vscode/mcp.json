@@ -1,0 +1,29 @@
+{
+  "$schema": "https://raw.githubusercontent.com/modelcontextprotocol/specification/main/schemas/mcp.json",
+  "servers": {
+    "grafana-dev-viewer": {
+      "type": "sse",
+      "url": "http://localhost:8765/mcp/sse",
+      "label": "Grafana — Dev (Viewer)",
+      "description": "Read-only access to dev Grafana via Bifröst"
+    },
+    "grafana-dev-editor": {
+      "type": "sse",
+      "url": "http://localhost:8767/mcp/sse",
+      "label": "Grafana — Dev (Editor)",
+      "description": "Editor-scoped access to dev Grafana — can silence alerts"
+    },
+    "grafana-perf-viewer": {
+      "type": "sse",
+      "url": "http://localhost:8768/mcp/sse",
+      "label": "Grafana — Perf (Viewer)",
+      "description": "Read-only access to perf Grafana via Bifröst"
+    },
+    "grafana-prod-admin": {
+      "type": "sse",
+      "url": "http://localhost:8766/mcp/sse",
+      "label": "Grafana — Prod (Admin)",
+      "description": "Full admin access to prod Grafana — use sparingly"
+    }
+  }
+}

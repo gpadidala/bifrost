@@ -1,0 +1,64 @@
+[project]
+name = "bifrost"
+version = "1.3.0"
+description = "Bifröst — multi-transport, multi-role, multi-environment MCP server framework for Grafana"
+readme = "README.md"
+license = { file = "LICENSE" }
+requires-python = ">=3.11"
+authors = [{ name = "Gopal Rao", email = "gopalpadiala@gmail.com" }]
+keywords = ["grafana", "mcp", "model-context-protocol", "llm", "claude", "openai", "observability", "aiops"]
+classifiers = [
+    "Development Status :: 5 - Production/Stable",
+    "Intended Audience :: Developers",
+    "Intended Audience :: System Administrators",
+    "License :: OSI Approved :: MIT License",
+    "Operating System :: OS Independent",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+    "Programming Language :: Python :: 3.13",
+    "Topic :: System :: Monitoring",
+    "Topic :: Software Development :: Libraries :: Python Modules",
+]
+
+[tool.uv.workspace]
+members = ["packages/core", "packages/sdk"]
+
+[tool.uv.sources]
+grafana-mcp-core = { workspace = true }
+grafana-mcp-sdk  = { workspace = true }
+
+[tool.ruff]
+line-length = 100
+target-version = "py311"
+extend-exclude = ["packages/ui"]
+
+[tool.ruff.lint]
+select = ["E", "F", "I", "B", "UP", "N", "SIM", "ASYNC", "RET", "TID", "PT"]
+ignore = ["E501"]  # line length handled by formatter
+
+[tool.ruff.format]
+quote-style = "double"
+indent-style = "space"
+
+[tool.pytest.ini_options]
+asyncio_mode = "auto"
+addopts = "-ra --strict-markers --strict-config"
+testpaths = ["packages/core/tests", "packages/sdk/tests"]
+filterwarnings = [
+    "error",
+    "ignore::DeprecationWarning:respx.*",
+]
+
+[tool.coverage.run]
+branch = true
+source = ["packages/core/src", "packages/sdk/src"]
+
+[tool.coverage.report]
+show_missing = true
+skip_covered = false
+fail_under = 90
+exclude_lines = [
+    "pragma: no cover",
+    "if TYPE_CHECKING:",
+    "raise NotImplementedError",
+]

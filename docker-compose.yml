@@ -1,0 +1,89 @@
+# ─────────────────────────────────────────────────────────────────
+#  Bifröst — docker compose
+#
+#  Default profile boots only the MCP server + UI.
+#  --profile demo additionally boots a pre-seeded Grafana on :3000.
+# ─────────────────────────────────────────────────────────────────
+
+services:
+  # ─── Core MCP server ────────────────────────────────────────────
+  bifrost-core:
+    build:
+      context: .
+      dockerfile: Dockerfile
+      target: core
+      args:
+        HTTP_PROXY: ${HTTP_PROXY:-}
+        HTTPS_PROXY: ${HTTPS_PROXY:-}
+        NO_PROXY: ${NO_PROXY:-}
+    image: gpadidala/bifrost-core:latest
+    container_name: bifrost-core
+    restart: unless-stopped
+    env_file: .env
+    environment:
+      GRAFANA_MCP_TRANSPORT__HOST: 0.0.0.0
+      GRAFANA_MCP_TRANSPORT__PORT: 8765
+      GRAFANA_MCP_TRANSPORT__MODE: sse
+      GRAFANA_MCP_LOG_FORMAT: json
+    ports:
+      - "8765:8765"   # SSE transport for UI + VSCode
+      - "8766:8766"   # streamable HTTP for SDK + CI
+    healthcheck:
+      test: ["CMD", "curl", "-fsS", "http://localhost:8765/healthz"]
+      interval: 15s
+      timeout: 3s
+      retries: 5
+      start_period: 10s
+    networks:
+      - bifrost
+
+  # ─── React UI ───────────────────────────────────────────────────
+  bifrost-ui:
+    build:
+      context: .
+      dockerfile: Dockerfile
+      target: ui
+    image: gpadidala/bifrost-ui:latest
+    container_name: bifrost-ui
+    restart: unless-stopped
+    environment:
+      VITE_MCP_SSE_URL: http://localhost:8765/mcp/sse
+    ports:
+      - "5173:80"
+    depends_on:
+      bifrost-core:
+        condition: service_healthy
+    networks:
+      - bifrost
+
+  # ─── Demo Grafana (optional, --profile demo) ────────────────────
+  grafana-demo:
+    image: grafana/grafana-oss:11.4.0
+    container_name: bifrost-grafana-demo
+    profiles: ["demo"]
+    restart: unless-stopped
+    environment:
+      GF_SECURITY_ADMIN_USER: admin
+      GF_SECURITY_ADMIN_PASSWORD: admin
+      GF_AUTH_ANONYMOUS_ENABLED: "true"
+      GF_AUTH_ANONYMOUS_ORG_ROLE: Viewer
+      GF_FEATURE_TOGGLES_ENABLE: serviceAccounts,publicDashboards
+    ports:
+      - "3000:3000"
+    volumes:
+      - grafana-demo-data:/var/lib/grafana
+      - ./scripts/demo-provisioning:/etc/grafana/provisioning:ro
+    healthcheck:
+      test: ["CMD", "wget", "-qO-", "http://localhost:3000/api/health"]
+      interval: 10s
+      timeout: 3s
+      retries: 10
+    networks:
+      - bifrost
+
+volumes:
+  grafana-demo-data:
+
+networks:
+  bifrost:
+    driver: bridge

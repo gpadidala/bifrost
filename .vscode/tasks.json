@@ -1,0 +1,92 @@
+{
+  "version": "2.0.0",
+  "tasks": [
+    {
+      "label": "MCP: Start Dev Server (SSE, Viewer)",
+      "type": "shell",
+      "command": "uv run grafana-mcp serve --transport sse --env dev --role viewer --port 8765",
+      "group": "build",
+      "isBackground": true,
+      "presentation": {
+        "panel": "dedicated",
+        "reveal": "always"
+      },
+      "problemMatcher": {
+        "owner": "bifrost",
+        "pattern": [
+          {
+            "regexp": "^.*$",
+            "file": 1,
+            "location": 2,
+            "message": 3
+          }
+        ],
+        "background": {
+          "activeOnStart": true,
+          "beginsPattern": "Starting Bifröst MCP server",
+          "endsPattern": "listening on http"
+        }
+      }
+    },
+    {
+      "label": "MCP: Start Dev Server (SSE, Editor)",
+      "type": "shell",
+      "command": "uv run grafana-mcp serve --transport sse --env dev --role editor --port 8767",
+      "group": "build",
+      "isBackground": true,
+      "presentation": { "panel": "dedicated" }
+    },
+    {
+      "label": "MCP: Start Prod Server (SSE, Admin)",
+      "type": "shell",
+      "command": "uv run grafana-mcp serve --transport sse --env prod --role admin --port 8766",
+      "group": "build",
+      "isBackground": true,
+      "presentation": { "panel": "dedicated" }
+    },
+    {
+      "label": "MCP: Start Streamable HTTP Server (Dev, Admin)",
+      "type": "shell",
+      "command": "uv run grafana-mcp serve --transport http --env dev --role admin --port 8769",
+      "group": "build",
+      "isBackground": true,
+      "presentation": { "panel": "dedicated" }
+    },
+    {
+      "label": "UI: Vite Dev Server",
+      "type": "shell",
+      "command": "pnpm --filter ./packages/ui dev",
+      "group": "build",
+      "isBackground": true,
+      "presentation": { "panel": "dedicated" }
+    },
+    {
+      "label": "Test: All Packages",
+      "type": "shell",
+      "command": "make test",
+      "group": { "kind": "test", "isDefault": true },
+      "presentation": { "panel": "dedicated", "reveal": "always" }
+    },
+    {
+      "label": "Lint: All Packages",
+      "type": "shell",
+      "command": "make lint",
+      "group": "test",
+      "presentation": { "panel": "dedicated" }
+    },
+    {
+      "label": "Demo: Boot Everything (Grafana + MCP + UI)",
+      "type": "shell",
+      "command": "make demo",
+      "group": "build",
+      "presentation": { "panel": "dedicated", "reveal": "always" }
+    },
+    {
+      "label": "Validate: .env config",
+      "type": "shell",
+      "command": "uv run grafana-mcp validate-config",
+      "group": "test",
+      "presentation": { "panel": "dedicated" }
+    }
+  ]
+}

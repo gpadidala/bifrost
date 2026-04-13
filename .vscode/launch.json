@@ -1,0 +1,74 @@
+{
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "name": "Debug: MCP Server (SSE, Dev, Viewer)",
+      "type": "debugpy",
+      "request": "launch",
+      "module": "grafana_mcp.cli",
+      "args": ["serve", "--transport", "sse", "--env", "dev", "--role", "viewer", "--port", "8765"],
+      "cwd": "${workspaceFolder}",
+      "envFile": "${workspaceFolder}/.env",
+      "console": "integratedTerminal",
+      "justMyCode": false
+    },
+    {
+      "name": "Debug: MCP Server (HTTP, Dev, Admin)",
+      "type": "debugpy",
+      "request": "launch",
+      "module": "grafana_mcp.cli",
+      "args": ["serve", "--transport", "http", "--env", "dev", "--role", "admin", "--port", "8769"],
+      "cwd": "${workspaceFolder}",
+      "envFile": "${workspaceFolder}/.env",
+      "console": "integratedTerminal",
+      "justMyCode": false
+    },
+    {
+      "name": "Debug: SDK CLI",
+      "type": "debugpy",
+      "request": "launch",
+      "module": "grafana_mcp_sdk.cli",
+      "args": ["run", "list_dashboards", "--env", "dev"],
+      "cwd": "${workspaceFolder}",
+      "envFile": "${workspaceFolder}/.env",
+      "console": "integratedTerminal"
+    },
+    {
+      "name": "Debug: Core Tests",
+      "type": "debugpy",
+      "request": "launch",
+      "module": "pytest",
+      "args": ["packages/core/tests", "-vv", "--no-cov"],
+      "cwd": "${workspaceFolder}",
+      "console": "integratedTerminal",
+      "justMyCode": false
+    },
+    {
+      "name": "Debug: UI Vite Dev Server",
+      "type": "node",
+      "request": "launch",
+      "runtimeExecutable": "pnpm",
+      "runtimeArgs": ["--filter", "./packages/ui", "dev"],
+      "cwd": "${workspaceFolder}",
+      "console": "integratedTerminal"
+    },
+    {
+      "name": "Debug: UI in Chrome",
+      "type": "chrome",
+      "request": "launch",
+      "url": "http://localhost:5173",
+      "webRoot": "${workspaceFolder}/packages/ui",
+      "preLaunchTask": "UI: Vite Dev Server"
+    }
+  ],
+  "compounds": [
+    {
+      "name": "Debug: Full Stack (MCP SSE + UI)",
+      "configurations": [
+        "Debug: MCP Server (SSE, Dev, Viewer)",
+        "Debug: UI Vite Dev Server"
+      ],
+      "stopAll": true
+    }
+  ]
+}
