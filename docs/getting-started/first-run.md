@@ -85,7 +85,7 @@ pnpm --filter ./packages/ui dev
 
 Open the URL. The first screen is **Connection Config**.
 
-![Connection Config](../assets/screenshots/walkthrough-01-connection.png)
+![Connection Config](../assets/screenshots/walkthrough-01-connection.svg)
 
 The `dev` card should already say **Connected** in green — the UI auto-discovered the server you just started. The `perf` and `prod` cards are red **Untested** until you click **Test Connection** on each.
 
@@ -93,7 +93,7 @@ The `dev` card should already say **Connected** in green — the UI auto-discove
 
 Click the **gear** icon in the top-right → **LLM Settings** drawer slides in.
 
-![LLM Drawer](../assets/screenshots/walkthrough-02-llm.png)
+![LLM Drawer](../assets/screenshots/walkthrough-02-llm.svg)
 
 - **Provider:** Anthropic or OpenAI
 - **Model:** `claude-sonnet-4-20250514` is a reliable default; for cheaper Q&A try `gpt-4o-mini`.
@@ -110,7 +110,7 @@ Click **Chat** in the sidebar. Type:
 
 You'll see the LLM response stream in. About a second in, a collapsible card appears mid-stream:
 
-![Tool Call Card](../assets/screenshots/walkthrough-03-toolcall.png)
+![Tool Call Card](../assets/screenshots/walkthrough-03-toolcall.svg)
 
 This is the **tool call visualization** — it shows the tool name (`list_dashboards`), the params the LLM chose (`{"folder_uid": "general"}`), and the result (a JSON list). Click the card to expand/collapse.
 

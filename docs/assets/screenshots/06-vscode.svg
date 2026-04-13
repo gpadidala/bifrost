@@ -1,0 +1,36 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 560 360">
+  <rect width="560" height="360" rx="8" fill="#1e1e1e"/>
+  <rect width="560" height="36" rx="8" fill="#2d2d30"/>
+  <rect y="28" width="560" height="8" fill="#2d2d30"/>
+  <circle cx="18" cy="18" r="5.5" fill="#ef4444" opacity="0.8"/>
+  <circle cx="36" cy="18" r="5.5" fill="#eab308" opacity="0.8"/>
+  <circle cx="54" cy="18" r="5.5" fill="#22c55e" opacity="0.8"/>
+  <text x="280" y="22" text-anchor="middle" font-family="system-ui,Arial,sans-serif" font-size="11" fill="#9e9e9e">VSCode &#8212; Copilot Chat (MCP enabled)</text>
+  <!-- VSCode activity bar -->
+  <rect x="0" y="36" width="44" height="324" fill="#252526"/>
+  <rect x="8" y="60" width="28" height="4" rx="2" fill="#007ACC"/>
+  <rect x="8" y="100" width="28" height="4" rx="2" fill="#5a5a5a"/>
+  <rect x="8" y="140" width="28" height="4" rx="2" fill="#5a5a5a"/>
+  <!-- Chat panel -->
+  <rect x="44" y="36" width="516" height="308" fill="#1e1e1e"/>
+  <!-- User message -->
+  <rect x="200" y="60" width="340" height="32" rx="6" fill="#2d2d30"/>
+  <rect x="212" y="68" width="200" height="4" rx="2" fill="#6a9955" opacity="0.7"/>
+  <rect x="212" y="78" width="140" height="4" rx="2" fill="#6a9955" opacity="0.5"/>
+  <!-- Claude response with tool call -->
+  <rect x="60" y="108" width="340" height="56" rx="6" fill="#252526" stroke="#3e3e42" stroke-width="1"/>
+  <rect x="72" y="116" width="160" height="4" rx="2" fill="#9e9e9e" opacity="0.5"/>
+  <rect x="72" y="126" width="200" height="4" rx="2" fill="#9e9e9e" opacity="0.4"/>
+  <!-- MCP tool call in VSCode style -->
+  <rect x="60" y="178" width="480" height="40" rx="4" fill="#2d2d30" stroke="#007ACC" stroke-width="1"/>
+  <text x="76" y="196" font-family="monospace,Courier,sans-serif" font-size="10" fill="#007ACC">&#x2731; MCP: list_dashboards</text>
+  <rect x="76" y="202" width="200" height="3" rx="1.5" fill="#3e3e42"/>
+  <!-- Copilot chat input -->
+  <rect x="44" y="316" width="516" height="28" fill="#2d2d30"/>
+  <rect x="56" y="324" width="120" height="4" rx="2" fill="#5a5a5a" opacity="0.5"/>
+  <!-- Central title + badge -->
+  <text x="306" y="252" text-anchor="middle" font-family="system-ui,Arial,sans-serif" font-size="20" font-weight="600" fill="#d4d4d4">VSCode MCP Extension</text>
+  <text x="306" y="276" text-anchor="middle" font-family="system-ui,Arial,sans-serif" font-size="12" fill="#6b7280">Drops into Copilot Chat instantly</text>
+  <rect x="196" y="292" width="220" height="28" rx="14" fill="#1a0e00" stroke="#F46800" stroke-width="1" opacity="0.8"/>
+  <text x="306" y="310" text-anchor="middle" font-family="system-ui,Arial,sans-serif" font-size="10" font-weight="600" letter-spacing="0.5" fill="#F46800">SCREENSHOT PLACEHOLDER</text>
+</svg>

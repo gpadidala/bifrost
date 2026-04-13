@@ -1,0 +1,32 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 560 360">
+  <rect width="560" height="360" rx="8" fill="#0d0d12"/>
+  <rect width="560" height="36" rx="8" fill="#0f172a"/>
+  <rect y="28" width="560" height="8" fill="#0f172a"/>
+  <circle cx="18" cy="18" r="5.5" fill="#ef4444" opacity="0.8"/>
+  <circle cx="36" cy="18" r="5.5" fill="#eab308" opacity="0.8"/>
+  <circle cx="54" cy="18" r="5.5" fill="#22c55e" opacity="0.8"/>
+  <text x="280" y="22" text-anchor="middle" font-family="system-ui,Arial,sans-serif" font-size="11" fill="#6b7280">Bifr&#246;st &#8212; Resource Explorer</text>
+  <!-- Sidebar -->
+  <rect x="0" y="36" width="52" height="324" fill="#080d18"/>
+  <rect x="14" y="64" width="24" height="3" rx="1.5" fill="#1f2937"/>
+  <rect x="14" y="100" width="24" height="3" rx="1.5" fill="#1f2937"/>
+  <rect x="14" y="136" width="24" height="3" rx="1.5" fill="#1f2937"/>
+  <rect x="14" y="172" width="24" height="3" rx="1.5" fill="#F46800" opacity="0.8"/>
+  <!-- Tree panel -->
+  <rect x="60" y="44" width="188" height="308" fill="#080d18" stroke="#1f2937" stroke-width="1"/>
+  <text x="74" y="68" font-family="system-ui,Arial,sans-serif" font-size="11" font-weight="600" fill="#9ca3af">RESOURCES</text>
+  <!-- Tree items -->
+  <text x="74" y="92" font-family="system-ui,Arial,sans-serif" font-size="11" fill="#f1f5f9">&#x25BC; &#x1F4C1; General</text>
+  <text x="90" y="110" font-family="system-ui,Arial,sans-serif" font-size="10" fill="#9ca3af">&#x25BA; &#x1F4CA; CPU Overview</text>
+  <text x="90" y="126" font-family="system-ui,Arial,sans-serif" font-size="10" fill="#9ca3af">&#x25BA; &#x1F4CA; Memory Usage</text>
+  <text x="90" y="142" font-family="system-ui,Arial,sans-serif" font-size="10" fill="#9ca3af">&#x25BA; &#x1F4CA; Network I/O</text>
+  <text x="74" y="162" font-family="system-ui,Arial,sans-serif" font-size="11" fill="#f1f5f9">&#x25BA; &#x1F4C1; Kubernetes</text>
+  <text x="74" y="182" font-family="system-ui,Arial,sans-serif" font-size="11" fill="#f1f5f9">&#x25BA; &#x1F4C1; Alerts</text>
+  <text x="74" y="202" font-family="system-ui,Arial,sans-serif" font-size="10" fill="#6b7280">&#x1F50C; Prometheus</text>
+  <text x="74" y="218" font-family="system-ui,Arial,sans-serif" font-size="10" fill="#6b7280">&#x1F50C; Loki</text>
+  <!-- Central title + badge -->
+  <text x="370" y="190" text-anchor="middle" font-family="system-ui,Arial,sans-serif" font-size="20" font-weight="600" fill="#f1f5f9">Resource Explorer</text>
+  <text x="370" y="214" text-anchor="middle" font-family="system-ui,Arial,sans-serif" font-size="12" fill="#6b7280">Folders &#x2192; Dashboards &#x2192; Panels (live)</text>
+  <rect x="260" y="232" width="220" height="28" rx="14" fill="#1a0e00" stroke="#F46800" stroke-width="1" opacity="0.8"/>
+  <text x="370" y="250" text-anchor="middle" font-family="system-ui,Arial,sans-serif" font-size="10" font-weight="600" letter-spacing="0.5" fill="#F46800">SCREENSHOT PLACEHOLDER</text>
+</svg>

@@ -1,0 +1,39 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 560 360">
+  <rect width="560" height="360" rx="8" fill="#0d0d12"/>
+  <rect width="560" height="36" rx="8" fill="#0f172a"/>
+  <rect y="28" width="560" height="8" fill="#0f172a"/>
+  <circle cx="18" cy="18" r="5.5" fill="#ef4444" opacity="0.8"/>
+  <circle cx="36" cy="18" r="5.5" fill="#eab308" opacity="0.8"/>
+  <circle cx="54" cy="18" r="5.5" fill="#22c55e" opacity="0.8"/>
+  <text x="280" y="22" text-anchor="middle" font-family="system-ui,Arial,sans-serif" font-size="11" fill="#6b7280">Bifr&#246;st &#8212; AI Chat</text>
+  <!-- Sidebar -->
+  <rect x="0" y="36" width="52" height="324" fill="#080d18"/>
+  <rect x="14" y="64" width="24" height="3" rx="1.5" fill="#1f2937"/>
+  <rect x="14" y="100" width="24" height="3" rx="1.5" fill="#1f2937"/>
+  <rect x="14" y="136" width="24" height="3" rx="1.5" fill="#F46800" opacity="0.8"/>
+  <!-- Chat bubbles (simulated) -->
+  <!-- User message -->
+  <rect x="300" y="55" width="240" height="36" rx="8" fill="#1e3a5f"/>
+  <rect x="300" y="58" width="180" height="5" rx="2.5" fill="#3b82f6" opacity="0.5"/>
+  <rect x="300" y="68" width="120" height="5" rx="2.5" fill="#3b82f6" opacity="0.3"/>
+  <rect x="300" y="78" width="90" height="5" rx="2.5" fill="#3b82f6" opacity="0.3"/>
+  <!-- Assistant response -->
+  <rect x="68" y="105" width="240" height="56" rx="8" fill="#0f172a" stroke="#1f2937" stroke-width="1"/>
+  <rect x="80" y="114" width="160" height="5" rx="2.5" fill="#6b7280" opacity="0.6"/>
+  <rect x="80" y="124" width="210" height="5" rx="2.5" fill="#6b7280" opacity="0.5"/>
+  <rect x="80" y="134" width="140" height="5" rx="2.5" fill="#6b7280" opacity="0.4"/>
+  <rect x="80" y="144" width="180" height="5" rx="2.5" fill="#6b7280" opacity="0.3"/>
+  <!-- Tool call card -->
+  <rect x="68" y="175" width="460" height="46" rx="6" fill="#111827" stroke="#F46800" stroke-width="1" opacity="0.9"/>
+  <rect x="78" y="183" width="8" height="8" rx="1" fill="#F46800"/>
+  <text x="94" y="191" font-family="monospace,Courier,sans-serif" font-size="10" fill="#F46800">list_dashboards</text>
+  <rect x="78" y="199" width="200" height="4" rx="2" fill="#374151"/>
+  <!-- Input area -->
+  <rect x="68" y="308" width="460" height="32" rx="6" fill="#0f172a" stroke="#1f2937" stroke-width="1"/>
+  <rect x="80" y="319" width="120" height="3" rx="1.5" fill="#374151" opacity="0.5"/>
+  <!-- Central title + badge -->
+  <text x="306" y="244" text-anchor="middle" font-family="system-ui,Arial,sans-serif" font-size="20" font-weight="600" fill="#f1f5f9">AI Chat Interface</text>
+  <text x="306" y="268" text-anchor="middle" font-family="system-ui,Arial,sans-serif" font-size="12" fill="#6b7280">Claude &#xB7; GPT &#xB7; Streaming &#xB7; Tool Calls</text>
+  <rect x="196" y="284" width="220" height="28" rx="14" fill="#1a0e00" stroke="#F46800" stroke-width="1" opacity="0.8"/>
+  <text x="306" y="302" text-anchor="middle" font-family="system-ui,Arial,sans-serif" font-size="10" font-weight="600" letter-spacing="0.5" fill="#F46800">SCREENSHOT PLACEHOLDER</text>
+</svg>
