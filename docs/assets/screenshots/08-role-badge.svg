@@ -1,0 +1,32 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 560 360">
+  <rect width="560" height="360" rx="8" fill="#0d0d12"/>
+  <rect width="560" height="36" rx="8" fill="#0f172a"/>
+  <rect y="28" width="560" height="8" fill="#0f172a"/>
+  <circle cx="18" cy="18" r="5.5" fill="#ef4444" opacity="0.8"/>
+  <circle cx="36" cy="18" r="5.5" fill="#eab308" opacity="0.8"/>
+  <circle cx="54" cy="18" r="5.5" fill="#22c55e" opacity="0.8"/>
+  <text x="280" y="22" text-anchor="middle" font-family="system-ui,Arial,sans-serif" font-size="11" fill="#6b7280">Bifr&#246;st &#8212; Role Selector</text>
+  <!-- Sidebar -->
+  <rect x="0" y="36" width="52" height="324" fill="#080d18"/>
+  <!-- Role segmented control (centered, prominent) -->
+  <!-- Background track -->
+  <rect x="120" y="100" width="320" height="48" rx="24" fill="#0f172a" stroke="#1f2937" stroke-width="1.5"/>
+  <!-- Active: Editor -->
+  <rect x="226" y="104" width="108" height="40" rx="20" fill="#F46800"/>
+  <!-- Viewer segment -->
+  <text x="174" y="129" text-anchor="middle" font-family="system-ui,Arial,sans-serif" font-size="13" fill="#6b7280">VIEWER</text>
+  <!-- Editor segment (active) -->
+  <text x="280" y="129" text-anchor="middle" font-family="system-ui,Arial,sans-serif" font-size="13" font-weight="700" fill="white">EDITOR</text>
+  <!-- Admin segment -->
+  <text x="386" y="129" text-anchor="middle" font-family="system-ui,Arial,sans-serif" font-size="13" fill="#6b7280">ADMIN</text>
+  <!-- Role description -->
+  <text x="280" y="176" text-anchor="middle" font-family="system-ui,Arial,sans-serif" font-size="11" fill="#F46800">Silence alerts &#xB7; Edit alert contact points</text>
+  <!-- Permission list -->
+  <text x="280" y="206" text-anchor="middle" font-family="system-ui,Arial,sans-serif" font-size="10" fill="#6b7280">&#x2713; list_dashboards  &#x2713; get_dashboard  &#x2713; silence_alert</text>
+  <text x="280" y="222" text-anchor="middle" font-family="system-ui,Arial,sans-serif" font-size="10" fill="#374151">&#x2717; list_users  &#x2717; list_service_accounts</text>
+  <!-- Central title + badge -->
+  <text x="280" y="262" text-anchor="middle" font-family="system-ui,Arial,sans-serif" font-size="20" font-weight="600" fill="#f1f5f9">Role Selector</text>
+  <text x="280" y="286" text-anchor="middle" font-family="system-ui,Arial,sans-serif" font-size="12" fill="#6b7280">Viewer &#xB7; Editor &#xB7; Admin segmented control</text>
+  <rect x="170" y="302" width="220" height="28" rx="14" fill="#1a0e00" stroke="#F46800" stroke-width="1" opacity="0.8"/>
+  <text x="280" y="320" text-anchor="middle" font-family="system-ui,Arial,sans-serif" font-size="10" font-weight="600" letter-spacing="0.5" fill="#F46800">SCREENSHOT PLACEHOLDER</text>
+</svg>

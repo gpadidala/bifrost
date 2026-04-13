@@ -1,0 +1,54 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 560 360">
+  <rect width="560" height="360" rx="8" fill="#0d0d12"/>
+  <rect width="560" height="36" rx="8" fill="#0f172a"/>
+  <rect y="28" width="560" height="8" fill="#0f172a"/>
+  <circle cx="18" cy="18" r="5.5" fill="#ef4444" opacity="0.8"/>
+  <circle cx="36" cy="18" r="5.5" fill="#eab308" opacity="0.8"/>
+  <circle cx="54" cy="18" r="5.5" fill="#22c55e" opacity="0.8"/>
+  <text x="280" y="22" text-anchor="middle" font-family="system-ui,Arial,sans-serif" font-size="11" fill="#6b7280">Bifr&#246;st &#8212; Health Status</text>
+  <!-- Sidebar -->
+  <rect x="0" y="36" width="52" height="324" fill="#080d18"/>
+  <!-- Health grid: 3 envs x 3 roles -->
+  <!-- Header row -->
+  <text x="168" y="68" text-anchor="middle" font-family="system-ui,Arial,sans-serif" font-size="10" fill="#6b7280">VIEWER</text>
+  <text x="280" y="68" text-anchor="middle" font-family="system-ui,Arial,sans-serif" font-size="10" fill="#6b7280">EDITOR</text>
+  <text x="392" y="68" text-anchor="middle" font-family="system-ui,Arial,sans-serif" font-size="10" fill="#6b7280">ADMIN</text>
+  <!-- dev row -->
+  <text x="76" y="98" font-family="system-ui,Arial,sans-serif" font-size="11" font-weight="600" fill="#f1f5f9">dev</text>
+  <rect x="120" y="80" width="96" height="30" rx="6" fill="#0f172a" stroke="#22c55e" stroke-width="1"/>
+  <circle cx="138" cy="95" r="5" fill="#22c55e"/>
+  <text x="150" y="99" font-family="system-ui,Arial,sans-serif" font-size="10" fill="#22c55e">ok 12ms</text>
+  <rect x="232" y="80" width="96" height="30" rx="6" fill="#0f172a" stroke="#22c55e" stroke-width="1"/>
+  <circle cx="250" cy="95" r="5" fill="#22c55e"/>
+  <text x="262" y="99" font-family="system-ui,Arial,sans-serif" font-size="10" fill="#22c55e">ok 14ms</text>
+  <rect x="344" y="80" width="96" height="30" rx="6" fill="#0f172a" stroke="#22c55e" stroke-width="1"/>
+  <circle cx="362" cy="95" r="5" fill="#22c55e"/>
+  <text x="374" y="99" font-family="system-ui,Arial,sans-serif" font-size="10" fill="#22c55e">ok 11ms</text>
+  <!-- perf row -->
+  <text x="76" y="140" font-family="system-ui,Arial,sans-serif" font-size="11" font-weight="600" fill="#f1f5f9">perf</text>
+  <rect x="120" y="122" width="96" height="30" rx="6" fill="#0f172a" stroke="#6b7280" stroke-width="1"/>
+  <circle cx="138" cy="137" r="5" fill="#6b7280"/>
+  <text x="150" y="141" font-family="system-ui,Arial,sans-serif" font-size="10" fill="#6b7280">untested</text>
+  <rect x="232" y="122" width="96" height="30" rx="6" fill="#0f172a" stroke="#6b7280" stroke-width="1"/>
+  <circle cx="250" cy="137" r="5" fill="#6b7280"/>
+  <text x="262" y="141" font-family="system-ui,Arial,sans-serif" font-size="10" fill="#6b7280">untested</text>
+  <rect x="344" y="122" width="96" height="30" rx="6" fill="#0f172a" stroke="#6b7280" stroke-width="1"/>
+  <circle cx="362" cy="137" r="5" fill="#6b7280"/>
+  <text x="374" y="141" font-family="system-ui,Arial,sans-serif" font-size="10" fill="#6b7280">untested</text>
+  <!-- prod row -->
+  <text x="76" y="182" font-family="system-ui,Arial,sans-serif" font-size="11" font-weight="600" fill="#f1f5f9">prod</text>
+  <rect x="120" y="164" width="96" height="30" rx="6" fill="#0f172a" stroke="#ef4444" stroke-width="1"/>
+  <circle cx="138" cy="179" r="5" fill="#ef4444"/>
+  <text x="150" y="183" font-family="system-ui,Arial,sans-serif" font-size="10" fill="#ef4444">401 unauth</text>
+  <rect x="232" y="164" width="96" height="30" rx="6" fill="#0f172a" stroke="#ef4444" stroke-width="1"/>
+  <circle cx="250" cy="179" r="5" fill="#ef4444"/>
+  <text x="262" y="183" font-family="system-ui,Arial,sans-serif" font-size="10" fill="#ef4444">401 unauth</text>
+  <rect x="344" y="164" width="96" height="30" rx="6" fill="#0f172a" stroke="#ef4444" stroke-width="1"/>
+  <circle cx="362" cy="179" r="5" fill="#ef4444"/>
+  <text x="374" y="183" font-family="system-ui,Arial,sans-serif" font-size="10" fill="#ef4444">401 unauth</text>
+  <!-- Central title + badge -->
+  <text x="306" y="240" text-anchor="middle" font-family="system-ui,Arial,sans-serif" font-size="20" font-weight="600" fill="#f1f5f9">Health Status</text>
+  <text x="306" y="264" text-anchor="middle" font-family="system-ui,Arial,sans-serif" font-size="12" fill="#6b7280">Per-env &#xB7; per-role connection badges</text>
+  <rect x="196" y="280" width="220" height="28" rx="14" fill="#1a0e00" stroke="#F46800" stroke-width="1" opacity="0.8"/>
+  <text x="306" y="298" text-anchor="middle" font-family="system-ui,Arial,sans-serif" font-size="10" font-weight="600" letter-spacing="0.5" fill="#F46800">SCREENSHOT PLACEHOLDER</text>
+</svg>

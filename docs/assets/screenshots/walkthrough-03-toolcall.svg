@@ -1,0 +1,37 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 560 360">
+  <rect width="560" height="360" rx="8" fill="#0d0d12"/>
+  <rect width="560" height="36" rx="8" fill="#0f172a"/>
+  <rect y="28" width="560" height="8" fill="#0f172a"/>
+  <circle cx="18" cy="18" r="5.5" fill="#ef4444" opacity="0.8"/>
+  <circle cx="36" cy="18" r="5.5" fill="#eab308" opacity="0.8"/>
+  <circle cx="54" cy="18" r="5.5" fill="#22c55e" opacity="0.8"/>
+  <text x="280" y="22" text-anchor="middle" font-family="system-ui,Arial,sans-serif" font-size="11" fill="#6b7280">Bifr&#246;st &#8212; First Run: Step 6</text>
+  <!-- Step indicator -->
+  <rect x="0" y="36" width="560" height="24" fill="#080d18"/>
+  <text x="20" y="52" font-family="system-ui,Arial,sans-serif" font-size="10" fill="#F46800" font-weight="600">Step 6 of 7</text>
+  <text x="100" y="52" font-family="system-ui,Arial,sans-serif" font-size="10" fill="#6b7280">Type &#x201C;List all dashboards in General folder&#x201D; &#x2014; watch the tool call appear</text>
+  <!-- Chat messages -->
+  <!-- User message -->
+  <rect x="260" y="72" width="280" height="32" rx="8" fill="#1e3a5f"/>
+  <text x="400" y="88" text-anchor="middle" font-family="system-ui,Arial,sans-serif" font-size="10" fill="#93c5fd">List all dashboards in the General folder.</text>
+  <!-- Tool call card mid-stream (highlighted) -->
+  <rect x="20" y="116" width="520" height="56" rx="6" fill="#1a0e00" stroke="#F46800" stroke-width="2"/>
+  <rect x="20" y="116" width="520" height="26" rx="6" fill="#1a0e00"/>
+  <rect x="20" y="130" width="520" height="12" fill="#1a0e00"/>
+  <rect x="34" y="124" width="10" height="10" rx="2" fill="#F46800" opacity="0.8"/>
+  <text x="52" y="133" font-family="monospace,Courier,sans-serif" font-size="11" font-weight="700" fill="#F46800">list_dashboards</text>
+  <text x="280" y="133" font-family="system-ui,Arial,sans-serif" font-size="9" fill="#6b7280">params: {"folder_uid": "general"}</text>
+  <!-- Result indicator -->
+  <text x="34" y="158" font-family="monospace,Courier,sans-serif" font-size="10" fill="#22c55e">&#x2713; returned 7 dashboards (34ms)</text>
+  <!-- Assistant response -->
+  <rect x="20" y="184" width="360" height="56" rx="8" fill="#0f172a" stroke="#1f2937" stroke-width="1"/>
+  <rect x="32" y="192" width="220" height="5" rx="2.5" fill="#6b7280" opacity="0.5"/>
+  <rect x="32" y="202" width="300" height="5" rx="2.5" fill="#6b7280" opacity="0.4"/>
+  <rect x="32" y="212" width="180" height="5" rx="2.5" fill="#6b7280" opacity="0.4"/>
+  <rect x="32" y="222" width="260" height="5" rx="2.5" fill="#6b7280" opacity="0.3"/>
+  <!-- Central title + badge -->
+  <text x="306" y="272" text-anchor="middle" font-family="system-ui,Arial,sans-serif" font-size="20" font-weight="600" fill="#f1f5f9">First AI Tool Call</text>
+  <text x="306" y="296" text-anchor="middle" font-family="system-ui,Arial,sans-serif" font-size="12" fill="#6b7280">Tool call card appears mid-stream with params + result</text>
+  <rect x="196" y="314" width="220" height="28" rx="14" fill="#1a0e00" stroke="#F46800" stroke-width="1" opacity="0.8"/>
+  <text x="306" y="332" text-anchor="middle" font-family="system-ui,Arial,sans-serif" font-size="10" font-weight="600" letter-spacing="0.5" fill="#F46800">SCREENSHOT PLACEHOLDER</text>
+</svg>

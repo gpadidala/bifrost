@@ -1,0 +1,76 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 480">
+  <!-- Background -->
+  <rect width="1200" height="480" fill="#0d0d12"/>
+
+  <!-- Subtle grid lines -->
+  <line x1="0" y1="120" x2="1200" y2="120" stroke="#111827" stroke-width="1"/>
+  <line x1="0" y1="240" x2="1200" y2="240" stroke="#111827" stroke-width="1"/>
+  <line x1="0" y1="360" x2="1200" y2="360" stroke="#111827" stroke-width="1"/>
+  <line x1="300" y1="0" x2="300" y2="480" stroke="#111827" stroke-width="1"/>
+  <line x1="600" y1="0" x2="600" y2="480" stroke="#111827" stroke-width="1"/>
+  <line x1="900" y1="0" x2="900" y2="480" stroke="#111827" stroke-width="1"/>
+
+  <!-- Top orange accent bar -->
+  <rect width="1200" height="3" fill="#F46800"/>
+
+  <!-- Left side: rainbow bridge logo (large) -->
+  <!-- Concentric arcs centered at (260, 340) -->
+  <path d="M 140,340 A 120,120 0 0,1 380,340" fill="none" stroke="#ef4444" stroke-width="10" stroke-linecap="round" opacity="0.9"/>
+  <path d="M 153,340 A 107,107 0 0,1 367,340" fill="none" stroke="#F46800" stroke-width="11" stroke-linecap="round" opacity="0.9"/>
+  <path d="M 167,340 A 93,93 0 0,1 353,340" fill="none" stroke="#eab308" stroke-width="10" stroke-linecap="round" opacity="0.9"/>
+  <path d="M 181,340 A 79,79 0 0,1 339,340" fill="none" stroke="#22c55e" stroke-width="10" stroke-linecap="round" opacity="0.9"/>
+  <path d="M 195,340 A 65,65 0 0,1 325,340" fill="none" stroke="#3b82f6" stroke-width="10" stroke-linecap="round" opacity="0.9"/>
+  <path d="M 209,340 A 51,51 0 0,1 311,340" fill="none" stroke="#6366f1" stroke-width="10" stroke-linecap="round" opacity="0.9"/>
+  <path d="M 223,340 A 37,37 0 0,1 297,340" fill="none" stroke="#a855f7" stroke-width="10" stroke-linecap="round" opacity="0.9"/>
+
+  <!-- Pillars -->
+  <rect x="128" y="332" width="16" height="36" rx="3" fill="#F46800"/>
+  <rect x="376" y="332" width="16" height="36" rx="3" fill="#F46800"/>
+  <line x1="118" y1="368" x2="402" y2="368" stroke="#F46800" stroke-width="4" stroke-linecap="round"/>
+
+  <!-- Right side: text content -->
+  <!-- Title -->
+  <text x="680" y="170"
+        text-anchor="middle"
+        font-family="'Helvetica Neue', Helvetica, Arial, sans-serif"
+        font-size="48" font-weight="700" letter-spacing="2"
+        fill="#f1f5f9">Bifr&#246;st</text>
+
+  <!-- Subtitle -->
+  <text x="680" y="218"
+        text-anchor="middle"
+        font-family="Helvetica, Arial, sans-serif"
+        font-size="18" letter-spacing="1"
+        fill="#F46800">The rainbow bridge between LLMs and Grafana</text>
+
+  <!-- Divider -->
+  <line x1="540" y1="248" x2="820" y2="248" stroke="#1f2937" stroke-width="1"/>
+
+  <!-- Feature pills -->
+  <rect x="490" y="268" width="140" height="30" rx="15" fill="#0f172a" stroke="#1f2937" stroke-width="1"/>
+  <text x="560" y="288" text-anchor="middle" font-family="Arial, sans-serif" font-size="11" fill="#6b7280">&#x1F308; SSE + HTTP</text>
+
+  <rect x="645" y="268" width="140" height="30" rx="15" fill="#0f172a" stroke="#1f2937" stroke-width="1"/>
+  <text x="715" y="288" text-anchor="middle" font-family="Arial, sans-serif" font-size="11" fill="#6b7280">&#x1F6E1;&#xFE0F; 3 Roles</text>
+
+  <rect x="800" y="268" width="140" height="30" rx="15" fill="#0f172a" stroke="#1f2937" stroke-width="1"/>
+  <text x="870" y="288" text-anchor="middle" font-family="Arial, sans-serif" font-size="11" fill="#6b7280">&#x1F310; 3 Envs</text>
+
+  <!-- Coming soon badge -->
+  <rect x="576" y="330" width="208" height="40" rx="20" fill="#1a0e00" stroke="#F46800" stroke-width="1.5"/>
+  <text x="680" y="355"
+        text-anchor="middle"
+        font-family="Helvetica, Arial, sans-serif"
+        font-size="12" font-weight="700" letter-spacing="2"
+        fill="#F46800">DEMO COMING SOON</text>
+
+  <!-- Version badge -->
+  <text x="680" y="420"
+        text-anchor="middle"
+        font-family="monospace, Courier, sans-serif"
+        font-size="12" fill="#374151"
+        letter-spacing="1">v1.3.0 &#xB7; Multi-transport MCP &#xB7; React Chat UI &#xB7; Python SDK</text>
+
+  <!-- Bottom orange accent bar -->
+  <rect y="477" width="1200" height="3" fill="#F46800"/>
+</svg>

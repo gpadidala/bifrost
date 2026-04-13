@@ -1,0 +1,44 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 190" width="200" height="190">
+  <!-- Dark background -->
+  <rect width="200" height="190" rx="20" fill="#0d0d12"/>
+
+  <!-- Orange outer ring accent -->
+  <rect width="200" height="190" rx="20" fill="none" stroke="#F46800" stroke-width="1.5" opacity="0.6"/>
+
+  <!-- Rainbow bridge arcs (concentric semicircles, centered at 100,142) -->
+  <!-- Red (outermost) -->
+  <path d="M 20,142 A 80,80 0 0,1 180,142" fill="none" stroke="#ef4444" stroke-width="7" stroke-linecap="round"/>
+  <!-- Grafana Orange (slightly thicker for emphasis) -->
+  <path d="M 29,142 A 71,71 0 0,1 171,142" fill="none" stroke="#F46800" stroke-width="8" stroke-linecap="round"/>
+  <!-- Yellow -->
+  <path d="M 39,142 A 61,61 0 0,1 161,142" fill="none" stroke="#eab308" stroke-width="7" stroke-linecap="round"/>
+  <!-- Green -->
+  <path d="M 49,142 A 51,51 0 0,1 151,142" fill="none" stroke="#22c55e" stroke-width="7" stroke-linecap="round"/>
+  <!-- Blue -->
+  <path d="M 59,142 A 41,41 0 0,1 141,142" fill="none" stroke="#3b82f6" stroke-width="7" stroke-linecap="round"/>
+  <!-- Indigo -->
+  <path d="M 69,142 A 31,31 0 0,1 131,142" fill="none" stroke="#6366f1" stroke-width="7" stroke-linecap="round"/>
+  <!-- Violet (innermost) -->
+  <path d="M 79,142 A 21,21 0 0,1 121,142" fill="none" stroke="#a855f7" stroke-width="7" stroke-linecap="round"/>
+
+  <!-- Bridge pillars at base of outermost arc -->
+  <rect x="14" y="138" width="10" height="20" rx="2" fill="#F46800"/>
+  <rect x="176" y="138" width="10" height="20" rx="2" fill="#F46800"/>
+
+  <!-- Ground line -->
+  <line x1="8" y1="158" x2="192" y2="158" stroke="#F46800" stroke-width="3" stroke-linecap="round"/>
+
+  <!-- BIFRÖST wordmark -->
+  <text x="100" y="176"
+        text-anchor="middle"
+        font-family="'Helvetica Neue', Helvetica, Arial, sans-serif"
+        font-size="17" font-weight="700" letter-spacing="5"
+        fill="#f59e0b">BIFR&#214;ST</text>
+
+  <!-- Tagline -->
+  <text x="100" y="187"
+        text-anchor="middle"
+        font-family="Helvetica, Arial, sans-serif"
+        font-size="7.5" letter-spacing="2.5"
+        fill="#4b5563">LLM &#xB7; MCP &#xB7; GRAFANA</text>
+</svg>
