@@ -37,7 +37,8 @@ export function ChatPage({ client }: ChatProps) {
   }, [client]);
 
   const activeConv = store.activeConversation;
-  const llmReady = store.llm.apiKey.trim().length > 0;
+  // Built-in provider needs no key; hosted providers need a key
+  const llmReady = store.llm.provider === "builtin" || store.llm.apiKey.trim().length > 0;
 
   const ensureConv = useCallback((): string => {
     if (store.activeConversationId) return store.activeConversationId;
@@ -185,7 +186,20 @@ export function ChatPage({ client }: ChatProps) {
       </aside>
 
       <section className="chat-main">
-        {!llmReady && (
+        {store.llm.provider === "builtin" && (
+          <div className="banner" style={{ background: "var(--cyan-dim)", borderColor: "#22d3ee55" }}>
+            <strong style={{ color: "var(--cyan)" }}>Built-in agent active.</strong> No LLM key needed — questions are routed directly to MCP tools. For free-form reasoning, switch to Anthropic or OpenAI in{" "}
+            <button
+              className="btn ghost"
+              style={{ padding: "2px 10px", fontSize: 12 }}
+              onClick={() => document.querySelector<HTMLButtonElement>(".icon-btn[aria-label=Settings]")?.click()}
+            >
+              ⚙ Settings
+            </button>
+            .
+          </div>
+        )}
+        {store.llm.provider !== "builtin" && !llmReady && (
           <div className="banner">
             <strong>No LLM key configured.</strong> Open{" "}
             <button
@@ -195,7 +209,7 @@ export function ChatPage({ client }: ChatProps) {
             >
               ⚙ Settings
             </button>{" "}
-            → <em>LLM</em> to add an Anthropic or OpenAI key. Keys live in your browser; the Bifröst backend never sees them.
+            → <em>LLM</em> to add an Anthropic or OpenAI key — or switch back to the built-in agent. Keys live in your browser; the Bifröst backend never sees them.
           </div>
         )}
         {toolsError && (
@@ -206,7 +220,12 @@ export function ChatPage({ client }: ChatProps) {
 
         <div className="messages">
           {!activeConv || activeConv.messages.length === 0 ? (
-            <EmptyHero llmReady={llmReady} toolCount={tools.length} llmModel={store.llm.model} />
+            <EmptyHero
+              provider={store.llm.provider}
+              llmReady={llmReady}
+              toolCount={tools.length}
+              llmModel={store.llm.model}
+            />
           ) : (
             activeConv.messages.map((m) => <MessageView key={m.id} msg={m} />)
           )}
@@ -245,23 +264,47 @@ export function ChatPage({ client }: ChatProps) {
   );
 }
 
-function EmptyHero({ llmReady, toolCount, llmModel }: { llmReady: boolean; toolCount: number; llmModel: string }) {
+function EmptyHero({
+  provider,
+  llmReady,
+  toolCount,
+  llmModel,
+}: {
+  provider: "builtin" | "anthropic" | "openai";
+  llmReady: boolean;
+  toolCount: number;
+  llmModel: string;
+}) {
+  const builtin = provider === "builtin";
   return (
     <div className="chat-hero">
-      <h2>Ask Grafana anything.</h2>
+      <h2>{builtin ? "Ask Grafana — no key needed." : "Ask Grafana anything."}</h2>
       <p className="muted">
-        The LLM has <strong>{toolCount}</strong> Bifröst MCP tools on tap —{" "}
-        {llmReady ? (
-          <>using <span className="mono">{llmModel}</span>.</>
+        {builtin ? (
+          <>
+            Built-in agent routes your questions directly to <strong>{toolCount}</strong> Bifröst MCP tools. Works
+            offline, instant, no keys. Upgrade to Claude or GPT in Settings for free-form reasoning.
+          </>
         ) : (
-          <>add a key in Settings first.</>
+          <>
+            The LLM has <strong>{toolCount}</strong> Bifröst MCP tools on tap —{" "}
+            {llmReady ? (
+              <>using <span className="mono">{llmModel}</span>.</>
+            ) : (
+              <>add a key in Settings first.</>
+            )}
+          </>
         )}
       </p>
       <div className="suggestions">
-        <Suggestion text="List all dashboards tagged production" />
-        <Suggestion text="What datasources are configured and are they healthy?" />
-        <Suggestion text="Show the folder structure" />
-        <Suggestion text="Are there any firing alerts right now?" />
+        <Suggestion text="List all dashboards" />
+        <Suggestion text="How many dashboards are there?" />
+        <Suggestion text="Search dashboards for kafka" />
+        <Suggestion text="List datasources" />
+        <Suggestion text="What folders exist?" />
+        <Suggestion text="Are there any firing alerts?" />
+        <Suggestion text="Is Grafana healthy?" />
+        <Suggestion text="Dashboards tagged production" />
       </div>
     </div>
   );

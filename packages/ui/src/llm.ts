@@ -6,6 +6,7 @@
 // and retry all keep working.
 
 import type { BifrostClient } from "./api";
+import { runBuiltin } from "./builtin";
 import type { LLMConfig } from "./store";
 
 export interface MCPToolDef {
@@ -75,6 +76,9 @@ async function callTool(
 // ─────────────────────────────────────────────────────────────────────────────
 
 export async function runChat(req: StreamRequest): Promise<void> {
+  if (req.config.provider === "builtin") {
+    return runBuiltin(req);
+  }
   if (req.config.provider === "anthropic") {
     return runAnthropic(req);
   }

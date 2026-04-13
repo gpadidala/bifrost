@@ -13,7 +13,7 @@ export interface MCPServerEntry {
   url: string;
 }
 
-export type LLMProvider = "anthropic" | "openai";
+export type LLMProvider = "builtin" | "anthropic" | "openai";
 
 export interface LLMConfig {
   provider: LLMProvider;
@@ -77,8 +77,8 @@ const DEFAULTS: Persisted = {
   servers: [{ id: "local", label: "Local (Docker)", url: "http://127.0.0.1:8765" }],
   activeServerId: "local",
   llm: {
-    provider: "anthropic",
-    model: "claude-sonnet-4-5-20250929",
+    provider: "builtin",
+    model: "bifrost-intent-v1",
     apiKey: "",
     systemPrompt: DEFAULT_SYSTEM_PROMPT,
     maxTokens: 4096,

@@ -187,11 +187,11 @@ export function App() {
         </button>
         <button className={`nav-item ${tab === "chat" ? "active" : ""}`} onClick={() => setTab("chat")}>
           <span className="icon">✦</span>AI Chat
-          {store.llm.apiKey ? (
-            <span className="count">{store.llm.provider === "anthropic" ? "C" : "O"}</span>
-          ) : (
-            <span className="count" style={{ color: "var(--err)" }}>!</span>
-          )}
+          <span className="count">
+            {store.llm.provider === "builtin" && "B"}
+            {store.llm.provider === "anthropic" && (store.llm.apiKey ? "C" : "!")}
+            {store.llm.provider === "openai" && (store.llm.apiKey ? "O" : "!")}
+          </span>
         </button>
         <h2>Resources</h2>
         <button className={`nav-item ${tab === "dashboards" ? "active" : ""}`} onClick={() => setTab("dashboards")}>
@@ -870,7 +870,13 @@ function LLMConfigSection() {
   const llm = store.llm;
   const set = (patch: Partial<LLMConfig>) => store.setLLM(patch);
 
-  const models = llm.provider === "anthropic" ? ANTHROPIC_MODELS : OPENAI_MODELS;
+  const isBuiltin = llm.provider === "builtin";
+  const models =
+    llm.provider === "anthropic"
+      ? ANTHROPIC_MODELS
+      : llm.provider === "openai"
+        ? OPENAI_MODELS
+        : ["bifrost-intent-v1"];
   const modelIncluded = models.includes(llm.model);
 
   const selectStyle: React.CSSProperties = {
@@ -889,9 +895,8 @@ function LLMConfigSection() {
         LLM
       </h3>
       <p className="muted" style={{ fontSize: 12, marginTop: 0, marginBottom: 18 }}>
-        Pick an LLM provider and paste your API key. The key lives in your browser's localStorage and is sent
-        directly to Anthropic/OpenAI — the Bifröst backend never sees it. Tool calls still route through Bifröst so
-        role enforcement applies.
+        Pick a chat provider. <strong>Built-in</strong> is the default — no key, no external network, works offline.
+        Anthropic / OpenAI give you free-form reasoning; the key lives in your browser and never hits the Bifröst backend.
       </p>
 
       <div className="env-card">
@@ -902,18 +907,29 @@ function LLMConfigSection() {
               value={llm.provider}
               onChange={(e) => {
                 const provider = e.target.value as LLMProvider;
-                const defaultModel = provider === "anthropic" ? ANTHROPIC_MODELS[0]! : OPENAI_MODELS[0]!;
+                const defaultModel =
+                  provider === "anthropic"
+                    ? ANTHROPIC_MODELS[0]!
+                    : provider === "openai"
+                      ? OPENAI_MODELS[0]!
+                      : "bifrost-intent-v1";
                 set({ provider, model: defaultModel });
               }}
               style={selectStyle}
             >
+              <option value="builtin">Built-in (no key)</option>
               <option value="anthropic">Anthropic (Claude)</option>
               <option value="openai">OpenAI (GPT)</option>
             </select>
           </div>
           <div className="field">
             <label>Model</label>
-            <select value={llm.model} onChange={(e) => set({ model: e.target.value })} style={selectStyle}>
+            <select
+              value={llm.model}
+              onChange={(e) => set({ model: e.target.value })}
+              style={selectStyle}
+              disabled={isBuiltin}
+            >
               {!modelIncluded && <option value={llm.model}>{llm.model}</option>}
               {models.map((m) => (
                 <option key={m} value={m}>
@@ -924,65 +940,79 @@ function LLMConfigSection() {
           </div>
         </div>
 
-        <div className="field">
-          <label>API key</label>
-          <input
-            type="password"
-            placeholder={llm.provider === "anthropic" ? "sk-ant-…" : "sk-proj-…"}
-            value={llm.apiKey}
-            onChange={(e) => set({ apiKey: e.target.value })}
-            autoComplete="off"
-          />
-        </div>
-
-        <div className="field">
-          <label>System prompt</label>
-          <textarea
-            value={llm.systemPrompt}
-            onChange={(e) => set({ systemPrompt: e.target.value })}
-            rows={6}
-            style={{
-              background: "var(--bg-2)",
-              border: "1px solid var(--border-2)",
-              borderRadius: 7,
-              padding: "10px 13px",
-              color: "var(--fg-0)",
-              fontFamily: "var(--font-mono)",
-              fontSize: 11.5,
-              lineHeight: 1.6,
-              resize: "vertical",
-            }}
-          />
-        </div>
-
-        <div className="field-row">
+        {!isBuiltin && (
           <div className="field">
-            <label>Max tokens</label>
+            <label>API key</label>
             <input
-              type="number"
-              value={llm.maxTokens}
-              min={256}
-              max={32768}
-              onChange={(e) => set({ maxTokens: Number(e.target.value) })}
+              type="password"
+              placeholder={llm.provider === "anthropic" ? "sk-ant-…" : "sk-proj-…"}
+              value={llm.apiKey}
+              onChange={(e) => set({ apiKey: e.target.value })}
+              autoComplete="off"
             />
           </div>
-          <div className="field">
-            <label>Temperature</label>
-            <input
-              type="number"
-              value={llm.temperature}
-              min={0}
-              max={1}
-              step={0.05}
-              onChange={(e) => set({ temperature: Number(e.target.value) })}
-            />
-          </div>
-        </div>
+        )}
 
-        <div style={{ marginTop: 4 }}>
-          <span className={`badge ${llm.apiKey ? "ok" : "err"}`}>
+        {!isBuiltin && (
+          <>
+            <div className="field">
+              <label>System prompt</label>
+              <textarea
+                value={llm.systemPrompt}
+                onChange={(e) => set({ systemPrompt: e.target.value })}
+                rows={6}
+                style={{
+                  background: "var(--bg-2)",
+                  border: "1px solid var(--border-2)",
+                  borderRadius: 7,
+                  padding: "10px 13px",
+                  color: "var(--fg-0)",
+                  fontFamily: "var(--font-mono)",
+                  fontSize: 11.5,
+                  lineHeight: 1.6,
+                  resize: "vertical",
+                }}
+              />
+            </div>
+
+            <div className="field-row">
+              <div className="field">
+                <label>Max tokens</label>
+                <input
+                  type="number"
+                  value={llm.maxTokens}
+                  min={256}
+                  max={32768}
+                  onChange={(e) => set({ maxTokens: Number(e.target.value) })}
+                />
+              </div>
+              <div className="field">
+                <label>Temperature</label>
+                <input
+                  type="number"
+                  value={llm.temperature}
+                  min={0}
+                  max={1}
+                  step={0.05}
+                  onChange={(e) => set({ temperature: Number(e.target.value) })}
+                />
+              </div>
+            </div>
+          </>
+        )}
+
+        {isBuiltin && (
+          <p className="muted" style={{ fontSize: 11.5, margin: "8px 0 0" }}>
+            The built-in agent is a pattern matcher over the 16 MCP tools. It handles questions like "list dashboards",
+            "search dashboards for kafka", "any firing alerts", "is grafana healthy". Ask something it doesn't
+            recognize and it'll show you the full command list.
+          </p>
+        )}
+
+        <div style={{ marginTop: 12 }}>
+          <span className={`badge ${isBuiltin ? "ok" : llm.apiKey ? "ok" : "err"}`}>
             <span className="dot" />
-            {llm.apiKey ? "key configured" : "no key"}
+            {isBuiltin ? "built-in · ready" : llm.apiKey ? "key configured" : "no key"}
           </span>
         </div>
       </div>
