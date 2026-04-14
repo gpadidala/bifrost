@@ -11,6 +11,105 @@ interface GuideProps {
 }
 
 // ─────────────────────────────────────────────────────────────────────────────
+// Architecture page — renders the two hand-crafted SVG diagrams
+// ─────────────────────────────────────────────────────────────────────────────
+
+export function ArchitecturePage({ info }: { info: ServerInfo | null }) {
+  const env = info?.active_environment ?? "dev";
+  const role = info?.active_role ?? "viewer";
+  return (
+    <div className="guide">
+      <div className="guide-header">
+        <h2>Bifröst Architecture</h2>
+        <p className="muted">
+          Two views of how Bifröst bridges LLMs and Grafana. The layered stack shows every tier from client to
+          Grafana HTTP API. The REST-vs-MCP comparison shows why Bifröst ships both protocol surfaces on one server
+          — so you don't have to pick.
+        </p>
+      </div>
+
+      <div className="guide-live">
+        <span className="guide-live-label">Currently wired as:</span>
+        <span className="badge accent">
+          <span className="dot" />
+          env: {env}
+        </span>
+        <span className="badge accent">
+          <span className="dot" />
+          role: {role}
+        </span>
+        <span className="badge">transport: {info?.transport.mode ?? "—"}</span>
+      </div>
+
+      <div className="arch-card">
+        <div className="arch-card-header">
+          <div className="arch-card-title">
+            <span className="arch-num">1</span>
+            <div>
+              <h3>Layered Stack</h3>
+              <p>Client → Protocol → Core Engine → Grafana. Four bands, one request lifecycle.</p>
+            </div>
+          </div>
+          <a className="btn ghost" href="/architecture/bifrost-stack.svg" target="_blank" rel="noreferrer">
+            ⤢ open
+          </a>
+        </div>
+        <div className="arch-canvas">
+          <img src="/architecture/bifrost-stack.svg" alt="Bifröst layered architecture diagram" />
+        </div>
+      </div>
+
+      <div className="arch-card">
+        <div className="arch-card-header">
+          <div className="arch-card-title">
+            <span className="arch-num">2</span>
+            <div>
+              <h3>REST API vs. MCP Framework</h3>
+              <p>
+                Side-by-side: a classic REST integration (one per agent, no role model) vs. the MCP framework
+                Bifröst exposes. Same underlying Grafana, very different developer experience.
+              </p>
+            </div>
+          </div>
+          <a className="btn ghost" href="/architecture/bifrost-rest-vs-mcp.svg" target="_blank" rel="noreferrer">
+            ⤢ open
+          </a>
+        </div>
+        <div className="arch-canvas">
+          <img src="/architecture/bifrost-rest-vs-mcp.svg" alt="REST vs MCP architectural comparison" />
+        </div>
+      </div>
+
+      <div className="guide-footer">
+        <h3>Key design decisions</h3>
+        <dl>
+          <dt>One server, two transports</dt>
+          <dd>
+            REST bridge lives at <code>/api/*</code> for browsers &amp; scripts; MCP SSE lives at{" "}
+            <code>/mcp/sse</code> for agents. Both hit the same typed tool registry — no drift.
+          </dd>
+          <dt>Role enforcement before pool</dt>
+          <dd>
+            Every tool call runs through <code>enforce_role()</code> before the HTTP pool is even touched. A viewer
+            asking for <code>silence_alert</code> fails fast, never touches Grafana.
+          </dd>
+          <dt>9 pooled HTTP clients</dt>
+          <dd>
+            The pool lazily builds one <code>httpx.AsyncClient</code> per (env × role) pair. 3 × 3 = 9 clients max,
+            each HTTP/2, reused across requests.
+          </dd>
+          <dt>Built-in agent = no vendor lock-in</dt>
+          <dd>
+            The default chat provider is a deterministic intent matcher — no LLM key required to answer "list
+            dashboards" or "any firing alerts". Claude / GPT only needed for free-form reasoning.
+          </dd>
+        </dl>
+      </div>
+    </div>
+  );
+}
+
+// ─────────────────────────────────────────────────────────────────────────────
 // Shared CodeBlock with copy button
 // ─────────────────────────────────────────────────────────────────────────────
 

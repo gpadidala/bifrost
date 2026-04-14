@@ -195,6 +195,14 @@ Curl wrappers are easy to start, impossible to maintain, and leak admin tokens i
 
 ## 🏛️ Architecture
 
+<p align="center">
+  <img src="docs/assets/architecture/bifrost-stack.svg" alt="Bifröst layered architecture" width="100%">
+</p>
+
+<p align="center">
+  <img src="docs/assets/architecture/bifrost-rest-vs-mcp.svg" alt="REST vs MCP architectural comparison — Bifröst gives you both" width="100%">
+</p>
+
 ```
 ┌────────────────────────────────────────────────────────────────────────┐
 │                              Bifröst                                    │

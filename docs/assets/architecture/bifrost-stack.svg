@@ -1,0 +1,249 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 820" font-family="'Inter','IBM Plex Sans',system-ui,sans-serif">
+  <defs>
+    <!-- layer backgrounds -->
+    <linearGradient id="clientBG" x1="0" x2="1" y1="0" y2="0">
+      <stop offset="0" stop-color="#ede9fe"/>
+      <stop offset="1" stop-color="#f5f3ff"/>
+    </linearGradient>
+    <linearGradient id="protoBG" x1="0" x2="1" y1="0" y2="0">
+      <stop offset="0" stop-color="#dbeafe"/>
+      <stop offset="1" stop-color="#eff6ff"/>
+    </linearGradient>
+    <linearGradient id="coreBG" x1="0" x2="1" y1="0" y2="0">
+      <stop offset="0" stop-color="#fed7aa"/>
+      <stop offset="1" stop-color="#ffedd5"/>
+    </linearGradient>
+    <linearGradient id="dataBG" x1="0" x2="1" y1="0" y2="0">
+      <stop offset="0" stop-color="#bbf7d0"/>
+      <stop offset="1" stop-color="#dcfce7"/>
+    </linearGradient>
+
+    <!-- box gradients -->
+    <linearGradient id="boxBlue" x1="0" x2="0" y1="0" y2="1">
+      <stop offset="0" stop-color="#ffffff"/>
+      <stop offset="1" stop-color="#f0f9ff"/>
+    </linearGradient>
+    <linearGradient id="boxAmber" x1="0" x2="0" y1="0" y2="1">
+      <stop offset="0" stop-color="#ffffff"/>
+      <stop offset="1" stop-color="#fff7ed"/>
+    </linearGradient>
+    <linearGradient id="boxViolet" x1="0" x2="0" y1="0" y2="1">
+      <stop offset="0" stop-color="#ffffff"/>
+      <stop offset="1" stop-color="#f5f3ff"/>
+    </linearGradient>
+    <linearGradient id="boxGreen" x1="0" x2="0" y1="0" y2="1">
+      <stop offset="0" stop-color="#ffffff"/>
+      <stop offset="1" stop-color="#f0fdf4"/>
+    </linearGradient>
+
+    <!-- brand gradient -->
+    <linearGradient id="brandAccent" x1="0" x2="1" y1="0" y2="1">
+      <stop offset="0" stop-color="#fbbf24"/>
+      <stop offset="1" stop-color="#ec4899"/>
+    </linearGradient>
+
+    <!-- shadow -->
+    <filter id="softShadow" x="-20%" y="-20%" width="140%" height="140%">
+      <feDropShadow dx="0" dy="2" stdDeviation="3" flood-color="#000" flood-opacity="0.10"/>
+    </filter>
+    <filter id="glow" x="-20%" y="-20%" width="140%" height="140%">
+      <feGaussianBlur stdDeviation="4" result="blur"/>
+      <feMerge>
+        <feMergeNode in="blur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+
+    <!-- arrow marker -->
+    <marker id="arrowDown" viewBox="0 0 10 10" refX="5" refY="5" markerWidth="8" markerHeight="8" orient="auto">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#6366f1"/>
+    </marker>
+  </defs>
+
+  <!-- background -->
+  <rect width="1200" height="820" fill="#ffffff"/>
+
+  <!-- title -->
+  <text x="600" y="52" text-anchor="middle" font-size="32" font-weight="800" fill="#0f172a" letter-spacing="-0.5">
+    BIFRÖST — THE RAINBOW BRIDGE ARCHITECTURE
+  </text>
+  <text x="600" y="82" text-anchor="middle" font-size="14" fill="#64748b">
+    Multi-transport · Multi-role · Multi-environment MCP framework for Grafana
+  </text>
+
+  <!-- ═══════════════════════════════════════════════ CLIENT LAYER ═══ -->
+  <rect x="50" y="120" width="1100" height="140" rx="18" fill="url(#clientBG)" stroke="#c4b5fd" stroke-width="1.5"/>
+  <g transform="translate(82, 192)">
+    <rect x="-18" y="-60" width="36" height="120" rx="8" fill="#8b5cf6"/>
+    <text x="0" y="-14" transform="rotate(-90 0 0)" text-anchor="middle" font-size="11" font-weight="700" fill="#ffffff" letter-spacing="0.12em">CLIENT LAYER</text>
+  </g>
+
+  <!-- Browser UI -->
+  <g filter="url(#softShadow)">
+    <rect x="170" y="150" width="280" height="80" rx="12" fill="url(#boxViolet)" stroke="#c4b5fd" stroke-width="1.5"/>
+    <circle cx="200" cy="190" r="18" fill="url(#brandAccent)" filter="url(#glow)"/>
+    <text x="200" y="196" text-anchor="middle" font-size="18" fill="#ffffff">🌐</text>
+    <text x="230" y="184" font-size="15" font-weight="700" fill="#1e1b4b">Browser UI</text>
+    <text x="230" y="202" font-size="11" fill="#6b7280">React 18 · Vite · TypeScript</text>
+    <text x="230" y="216" font-size="11" fill="#6b7280">Chat · Settings · Resources</text>
+  </g>
+
+  <!-- VSCode Extension -->
+  <g filter="url(#softShadow)">
+    <rect x="465" y="150" width="280" height="80" rx="12" fill="url(#boxViolet)" stroke="#c4b5fd" stroke-width="1.5"/>
+    <circle cx="495" cy="190" r="18" fill="#0ea5e9"/>
+    <text x="495" y="196" text-anchor="middle" font-size="18" fill="#ffffff">🖥</text>
+    <text x="525" y="184" font-size="15" font-weight="700" fill="#1e1b4b">VSCode MCP</text>
+    <text x="525" y="202" font-size="11" fill="#6b7280">Copilot Chat · Claude Code</text>
+    <text x="525" y="216" font-size="11" fill="#6b7280">Continue · native MCP clients</text>
+  </g>
+
+  <!-- Python SDK -->
+  <g filter="url(#softShadow)">
+    <rect x="760" y="150" width="280" height="80" rx="12" fill="url(#boxViolet)" stroke="#c4b5fd" stroke-width="1.5"/>
+    <circle cx="790" cy="190" r="18" fill="#eab308"/>
+    <text x="790" y="196" text-anchor="middle" font-size="18" fill="#ffffff">🐍</text>
+    <text x="820" y="184" font-size="15" font-weight="700" fill="#1e1b4b">Python SDK</text>
+    <text x="820" y="202" font-size="11" fill="#6b7280">Sync + Async · httpx</text>
+    <text x="820" y="216" font-size="11" fill="#6b7280">Notebooks · CI · Scripts</text>
+  </g>
+
+  <!-- ═══════════════════════════════════════════════ PROTOCOL LAYER ═ -->
+  <rect x="50" y="290" width="1100" height="140" rx="18" fill="url(#protoBG)" stroke="#93c5fd" stroke-width="1.5"/>
+  <g transform="translate(82, 362)">
+    <rect x="-18" y="-60" width="36" height="120" rx="8" fill="#3b82f6"/>
+    <text x="0" y="-14" transform="rotate(-90 0 0)" text-anchor="middle" font-size="11" font-weight="700" fill="#ffffff" letter-spacing="0.12em">PROTOCOL LAYER</text>
+  </g>
+
+  <!-- REST Bridge -->
+  <g filter="url(#softShadow)">
+    <rect x="170" y="320" width="430" height="80" rx="12" fill="url(#boxBlue)" stroke="#93c5fd" stroke-width="1.5"/>
+    <circle cx="200" cy="360" r="18" fill="#0ea5e9"/>
+    <text x="200" y="366" text-anchor="middle" font-size="15" fill="#ffffff" font-weight="700">{ }</text>
+    <text x="230" y="354" font-size="15" font-weight="700" fill="#0c4a6e">REST Bridge</text>
+    <text x="230" y="372" font-size="11" fill="#6b7280">GET /api/server-info · /api/dashboards · /api/folders</text>
+    <text x="230" y="386" font-size="11" fill="#6b7280">PUT /api/environments · POST /api/tools/call · /api/active</text>
+  </g>
+
+  <!-- MCP SSE Transport -->
+  <g filter="url(#softShadow)">
+    <rect x="620" y="320" width="420" height="80" rx="12" fill="url(#boxBlue)" stroke="#93c5fd" stroke-width="1.5"/>
+    <circle cx="650" cy="360" r="18" fill="#7c3aed"/>
+    <text x="650" y="366" text-anchor="middle" font-size="16" fill="#ffffff" font-weight="700">⚡</text>
+    <text x="680" y="354" font-size="15" font-weight="700" fill="#0c4a6e">MCP SSE Transport</text>
+    <text x="680" y="372" font-size="11" fill="#6b7280">/mcp/sse  ·  /mcp/messages  ·  JSON-RPC 2.0</text>
+    <text x="680" y="386" font-size="11" fill="#6b7280">Streaming · tool_use · tool_result</text>
+  </g>
+
+  <!-- ═══════════════════════════════════════════════ CORE ENGINE ═══ -->
+  <rect x="50" y="460" width="1100" height="160" rx="18" fill="url(#coreBG)" stroke="#fdba74" stroke-width="1.5"/>
+  <g transform="translate(82, 540)">
+    <rect x="-18" y="-70" width="36" height="140" rx="8" fill="#f97316"/>
+    <text x="0" y="-20" transform="rotate(-90 0 0)" text-anchor="middle" font-size="11" font-weight="700" fill="#ffffff" letter-spacing="0.12em">CORE ENGINE</text>
+  </g>
+
+  <!-- Role Enforcement -->
+  <g filter="url(#softShadow)">
+    <rect x="140" y="490" width="230" height="100" rx="12" fill="url(#boxAmber)" stroke="#fdba74" stroke-width="1.5"/>
+    <circle cx="170" cy="530" r="18" fill="#ef4444"/>
+    <text x="170" y="537" text-anchor="middle" font-size="16" fill="#ffffff">🛡</text>
+    <text x="200" y="524" font-size="13" font-weight="700" fill="#7c2d12">Role Enforcement</text>
+    <text x="170" y="562" font-size="11" fill="#6b7280">TOOL_MINIMUM_ROLE</text>
+    <text x="170" y="576" font-size="11" fill="#6b7280">viewer &lt; editor &lt; admin</text>
+  </g>
+
+  <!-- Tool Registry -->
+  <g filter="url(#softShadow)">
+    <rect x="385" y="490" width="230" height="100" rx="12" fill="url(#boxAmber)" stroke="#fdba74" stroke-width="1.5"/>
+    <circle cx="415" cy="530" r="18" fill="#f59e0b"/>
+    <text x="415" y="536" text-anchor="middle" font-size="16" fill="#ffffff">🔧</text>
+    <text x="445" y="524" font-size="13" font-weight="700" fill="#7c2d12">Tool Registry</text>
+    <text x="415" y="562" font-size="11" fill="#6b7280">16 typed @mcp.tool</text>
+    <text x="415" y="576" font-size="11" fill="#6b7280">Pydantic schemas</text>
+  </g>
+
+  <!-- Client Pool -->
+  <g filter="url(#softShadow)">
+    <rect x="630" y="490" width="230" height="100" rx="12" fill="url(#boxAmber)" stroke="#fdba74" stroke-width="1.5"/>
+    <circle cx="660" cy="530" r="18" fill="#0891b2"/>
+    <text x="660" y="536" text-anchor="middle" font-size="16" fill="#ffffff">⟳</text>
+    <text x="690" y="524" font-size="13" font-weight="700" fill="#7c2d12">Client Pool</text>
+    <text x="660" y="562" font-size="11" fill="#6b7280">1 × (env, role) httpx</text>
+    <text x="660" y="576" font-size="11" fill="#6b7280">HTTP/2 · lazy init</text>
+  </g>
+
+  <!-- Retry / Rate Limit -->
+  <g filter="url(#softShadow)">
+    <rect x="875" y="490" width="230" height="100" rx="12" fill="url(#boxAmber)" stroke="#fdba74" stroke-width="1.5"/>
+    <circle cx="905" cy="530" r="18" fill="#10b981"/>
+    <text x="905" y="536" text-anchor="middle" font-size="16" fill="#ffffff">↯</text>
+    <text x="935" y="524" font-size="13" font-weight="700" fill="#7c2d12">Retry · Rate Limit</text>
+    <text x="905" y="562" font-size="11" fill="#6b7280">tenacity backoff</text>
+    <text x="905" y="576" font-size="11" fill="#6b7280">asyncio.Semaphore</text>
+  </g>
+
+  <!-- ═══════════════════════════════════════════════ GRAFANA LAYER ══ -->
+  <rect x="50" y="650" width="1100" height="140" rx="18" fill="url(#dataBG)" stroke="#86efac" stroke-width="1.5"/>
+  <g transform="translate(82, 722)">
+    <rect x="-18" y="-60" width="36" height="120" rx="8" fill="#16a34a"/>
+    <text x="0" y="-14" transform="rotate(-90 0 0)" text-anchor="middle" font-size="11" font-weight="700" fill="#ffffff" letter-spacing="0.12em">GRAFANA LAYER</text>
+  </g>
+
+  <!-- dev -->
+  <g filter="url(#softShadow)">
+    <rect x="170" y="680" width="280" height="80" rx="12" fill="url(#boxGreen)" stroke="#86efac" stroke-width="1.5"/>
+    <circle cx="200" cy="720" r="18" fill="#06b6d4"/>
+    <text x="200" y="726" text-anchor="middle" font-size="14" fill="#ffffff" font-weight="700">D</text>
+    <text x="230" y="714" font-size="15" font-weight="700" fill="#14532d">dev</text>
+    <text x="230" y="730" font-size="10" fill="#6b7280">viewer · editor · admin tokens</text>
+    <text x="230" y="744" font-size="10" fill="#6b7280">3 pooled httpx clients</text>
+  </g>
+
+  <!-- perf -->
+  <g filter="url(#softShadow)">
+    <rect x="465" y="680" width="280" height="80" rx="12" fill="url(#boxGreen)" stroke="#86efac" stroke-width="1.5"/>
+    <circle cx="495" cy="720" r="18" fill="#f59e0b"/>
+    <text x="495" y="726" text-anchor="middle" font-size="14" fill="#ffffff" font-weight="700">P</text>
+    <text x="525" y="714" font-size="15" font-weight="700" fill="#14532d">perf</text>
+    <text x="525" y="730" font-size="10" fill="#6b7280">viewer · editor · admin tokens</text>
+    <text x="525" y="744" font-size="10" fill="#6b7280">TLS verify · rate limited</text>
+  </g>
+
+  <!-- prod -->
+  <g filter="url(#softShadow)">
+    <rect x="760" y="680" width="280" height="80" rx="12" fill="url(#boxGreen)" stroke="#86efac" stroke-width="1.5"/>
+    <circle cx="790" cy="720" r="18" fill="#ec4899"/>
+    <text x="790" y="726" text-anchor="middle" font-size="14" fill="#ffffff" font-weight="700">P</text>
+    <text x="820" y="714" font-size="15" font-weight="700" fill="#14532d">prod</text>
+    <text x="820" y="730" font-size="10" fill="#6b7280">viewer · editor · admin tokens</text>
+    <text x="820" y="744" font-size="10" fill="#6b7280">Grafana 9.x – 12.x HTTP API</text>
+  </g>
+
+  <!-- ═════════════════════════════════════════════ connecting arrows ═ -->
+  <!-- Client → Protocol -->
+  <path d="M 310 230 L 310 320" stroke="#6366f1" stroke-width="2" fill="none" marker-end="url(#arrowDown)"/>
+  <path d="M 605 230 L 830 320" stroke="#6366f1" stroke-width="2" fill="none" marker-end="url(#arrowDown)" stroke-dasharray="4 4"/>
+  <path d="M 900 230 L 460 320" stroke="#6366f1" stroke-width="2" fill="none" marker-end="url(#arrowDown)" stroke-dasharray="4 4"/>
+
+  <!-- Protocol → Core -->
+  <path d="M 400 400 L 400 490" stroke="#6366f1" stroke-width="2" fill="none" marker-end="url(#arrowDown)"/>
+  <path d="M 830 400 L 745 490" stroke="#6366f1" stroke-width="2" fill="none" marker-end="url(#arrowDown)"/>
+
+  <!-- Core → Grafana -->
+  <path d="M 600 590 L 600 680" stroke="#6366f1" stroke-width="2" fill="none" marker-end="url(#arrowDown)"/>
+
+  <!-- side labels (right) -->
+  <g font-size="10" fill="#475569">
+    <text x="1160" y="190" text-anchor="end" font-weight="600">Three transports,</text>
+    <text x="1160" y="204" text-anchor="end">one tool surface</text>
+
+    <text x="1160" y="360" text-anchor="end" font-weight="600">REST bridge for the browser,</text>
+    <text x="1160" y="374" text-anchor="end">MCP SSE for agents</text>
+
+    <text x="1160" y="540" text-anchor="end" font-weight="600">Role-scoped, typed,</text>
+    <text x="1160" y="554" text-anchor="end">rate-limited, retryable</text>
+
+    <text x="1160" y="720" text-anchor="end" font-weight="600">9 pooled clients</text>
+    <text x="1160" y="734" text-anchor="end">(3 envs × 3 roles)</text>
+  </g>
+</svg>

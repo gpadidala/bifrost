@@ -1361,6 +1361,69 @@ kbd {
 .note.ok { border-color: #10b98144; background: var(--ok-dim); color: var(--ok); }
 .note.ok code { color: var(--ok); background: #10b98122; }
 
+/* Architecture cards */
+.arch-card {
+  background: linear-gradient(180deg, var(--bg-2) 0%, #12121e 100%);
+  border: 1px solid var(--border-2);
+  border-radius: 12px;
+  overflow: hidden;
+  margin-bottom: 24px;
+  box-shadow: var(--shadow-1);
+}
+.arch-card-header {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 18px 22px;
+  border-bottom: 1px solid var(--border-1);
+}
+.arch-card-title {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  flex: 1;
+}
+.arch-num {
+  width: 36px;
+  height: 36px;
+  border-radius: 10px;
+  background: linear-gradient(135deg, var(--accent) 0%, var(--pink) 100%);
+  color: #1a0a00;
+  font-family: var(--font-mono);
+  font-size: 16px;
+  font-weight: 800;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 0 16px var(--accent-glow);
+  flex-shrink: 0;
+}
+.arch-card-title h3 {
+  margin: 0 0 2px;
+  font-size: 16px;
+  font-weight: 700;
+  color: var(--fg-0);
+  text-transform: none;
+  letter-spacing: -0.01em;
+}
+.arch-card-title p {
+  margin: 0;
+  font-size: 12px;
+  color: var(--fg-2);
+  line-height: 1.55;
+}
+.arch-canvas {
+  background: #ffffff;
+  padding: 24px;
+  overflow-x: auto;
+}
+.arch-canvas img {
+  display: block;
+  width: 100%;
+  height: auto;
+  max-width: 100%;
+}
+
 /* Download card (Python SDK) */
 .download-card {
   display: grid;
