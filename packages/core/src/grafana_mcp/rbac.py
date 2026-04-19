@@ -28,6 +28,7 @@ TOOL_MINIMUM_ROLE: dict[str, GrafanaRole] = {
     "get_dashboard_panels": "viewer",
     # ── Dashboard mutations (editor/admin) ───────────────────────────
     "create_dashboard": "editor",
+    "create_smart_dashboard": "editor",
     "update_dashboard": "editor",
     "delete_dashboard": "admin",
     # ── Datasource tools ────────────────────────────────────────────

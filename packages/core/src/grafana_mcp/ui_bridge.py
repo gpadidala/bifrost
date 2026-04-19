@@ -48,6 +48,7 @@ _TOOL_DISPATCH: dict[str, Any] = {
     "get_dashboard": _dashboards.get_dashboard,
     "get_dashboard_panels": _dashboards.get_dashboard_panels,
     "create_dashboard": _dashboards.create_dashboard,
+    "create_smart_dashboard": _dashboards.create_smart_dashboard,
     "update_dashboard": _dashboards.update_dashboard,
     "delete_dashboard": _dashboards.delete_dashboard,
     "list_datasources": _datasources.list_datasources,
