@@ -37,3 +37,38 @@ async def list_folders(
     client = await pool.get(env_name, active_role)
     raw = await client.get_folders()
     return [Folder.from_api(f) for f in raw]
+
+
+@mcp.tool()
+async def create_folder(
+    title: str,
+    parent_uid: str | None = None,
+    environment: GrafanaEnvironment | None = None,
+    role: GrafanaRole | None = None,
+) -> Folder:
+    """Create a new Grafana folder.
+
+    Args:
+        title:       Folder title (required).
+        parent_uid:  Optional parent folder UID for nested folders.
+        environment: Override the active environment.
+        role:        Override the active role. Minimum: editor.
+
+    Returns:
+        ``Folder`` descriptor for the newly created folder.
+    """
+    settings = get_settings()
+    env_name = environment or settings.active_environment
+    active_role = role or settings.active_role
+
+    await enforce_role("create_folder", active_role)
+
+    pool = get_pool()
+    client = await pool.get(env_name, active_role)
+
+    body: dict = {"title": title}
+    if parent_uid:
+        body["parentUid"] = parent_uid
+
+    raw = await client.post("/api/folders", body)
+    return Folder.from_api(raw)

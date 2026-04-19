@@ -93,3 +93,14 @@ class DashboardDetail(BaseModel):
             folder_title=meta.get("folderTitle", ""),
             url=meta.get("url", ""),
         )
+
+
+class DashboardMutationResult(BaseModel):
+    """Result of a create/update/delete dashboard operation."""
+
+    ok: bool = Field(default=True, description="Whether the operation succeeded.")
+    uid: str = Field(default="", description="Dashboard UID (empty for delete).")
+    url: str = Field(default="", description="Relative dashboard URL.")
+    version: int = Field(default=0, description="New dashboard version.")
+    status: str = Field(default="success", description="Grafana status string.")
+    message: str = Field(default="", description="Human-readable result message.")
