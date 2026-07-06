@@ -26,6 +26,11 @@ TOOL_MINIMUM_ROLE: dict[str, GrafanaRole] = {
     "get_dashboard": "viewer",
     "search_dashboards": "viewer",
     "get_dashboard_panels": "viewer",
+    # ── Dashboard mutations (editor/admin) ───────────────────────────
+    "create_dashboard": "editor",
+    "create_smart_dashboard": "editor",
+    "update_dashboard": "editor",
+    "delete_dashboard": "admin",
     # ── Datasource tools ────────────────────────────────────────────
     "list_datasources": "viewer",
     "get_datasource": "viewer",
@@ -37,6 +42,7 @@ TOOL_MINIMUM_ROLE: dict[str, GrafanaRole] = {
     "silence_alert": "editor",  # mutates Grafana state
     # ── Folder tools ────────────────────────────────────────────────
     "list_folders": "viewer",
+    "create_folder": "editor",
     # ── User / service-account tools ─────────────────────────────────
     "list_users": "admin",
     "list_service_accounts": "admin",
